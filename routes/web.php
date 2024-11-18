@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TrainerRequestController;
 use App\Models\User;
@@ -20,6 +21,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::put('/request/approve/{user}', [TrainerRequestController::class, 'update'])->name('request.approve');
 });
+
+
+Route::get('/get-fit', [LandingPageController::class, 'index']);
 
 
 
