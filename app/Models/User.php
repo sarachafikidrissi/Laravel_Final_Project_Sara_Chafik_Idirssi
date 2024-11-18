@@ -60,4 +60,12 @@ class User extends Authenticatable
     {
         return $this->roles()->where("role", $role)->exists();
     }
+
+    public function payements() {
+        return $this->hasMany(Payement::class);
+    }
+
+    public function trainerRequests(){
+        return $this->hasMany(TrainerRequest::class);
+    }
 }

@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $trainerRole = Role::where("role", "admin")->first();
+        $trainerRole = Role::where("role", "trainer")->first();
         $memberRole = Role::where("role", "member")->first();
         view()->share([
             "trainer" => $trainerRole,

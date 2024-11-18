@@ -11,7 +11,7 @@
     <ul>
         <li><a href="{{ route('register') }}">become a memeber</a></li>
         <li><a href="{{ route('trainer') }}">become a trainer</a></li>
-        <li><a href="">login</a></li>
+        <li><a href="{{ route('login') }}">login</a></li>
     </ul>
 </body>
 </html>

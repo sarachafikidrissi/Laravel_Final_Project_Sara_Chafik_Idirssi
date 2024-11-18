@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Stripe\Checkout\Session;
+use Stripe\Price;
+use Stripe\Stripe;
 
 class RegisteredUserController extends Controller
 {
@@ -28,7 +31,7 @@ class RegisteredUserController extends Controller
 
     public function nextStep(Request $request) {
         $user = $request->session()->get('user');
-        return view('profile.memberNextStepRegister', compact('user'));
+        return view('profile.memberNextStepRegister', compact('user')); //* can be updated later
     }
 
     /**
@@ -54,8 +57,7 @@ class RegisteredUserController extends Controller
 
         $image->move(storage_path('app/public/images/profile'), $imageName);
         
-        if($request->role == 3){
-            $user = User::create([
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
@@ -66,11 +68,13 @@ class RegisteredUserController extends Controller
         
         $user->roles()->attach($request->role);
         $request->session()->put('user', $user);
-        return redirect(route('next'));
+        if($request->role == "3"){
+            return redirect(route('next'));
+        }else{
+            return redirect(route('trainer.subscribe', ['user_id'=>$user->id])); //* can be updated later
         }
-        else{
-            dd('not member');
-        }
+        
+        
 
 
         // event(new Registered($user));
@@ -120,8 +124,30 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
-
+        return redirect(route('dashboard', absolute: false)); //* can be updated later
 
     }
+
+    public function trainerSubscription($user_id) {
+
+        Stripe::setApiKey(config('stripe.sk'));
+        $prices = Price::all();
+
+        // dd($prices);
+        $checkout_session = Session::create([
+            'line_items' => [[
+            'price' => $prices->data[0]->id,
+            'quantity'=> 1
+
+            ]],
+            'mode' => 'subscription',
+            'success_url' => route('stripe.subsribe',['user_id'=>$user_id]), 
+            'cancel_url' => route('home'), //* can be updated later
+          ]);
+
+        return redirect()->away($checkout_session->url);
+    }
+
+
+    
 }

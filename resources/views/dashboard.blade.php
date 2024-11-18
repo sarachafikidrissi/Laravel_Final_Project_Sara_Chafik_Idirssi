@@ -18,6 +18,11 @@
                     {{ __("You're logged in! As a Trainer") }}
                 </div>
                 @endCheckRole
+                @checkRole('admin')
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                    {{ __("You're logged in! As Admin") }}
+                </div>
+                @endCheckRole
             </div>
         </div>
     </div>

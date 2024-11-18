@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\PayementController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -16,15 +17,24 @@ Route::middleware('guest')->group(function () {
         ->name('register');
 
 
-    Route::get('nextStep', [RegisteredUserController::class, 'nextStep'])
+    Route::get('nextStep', [RegisteredUserController::class, 'nextStep']) //* function can be updated later
         ->name('next');
 
-    Route::post('store-member', [RegisteredUserController::class, 'storeMember'])
+    Route::post('store-member', [RegisteredUserController::class, 'storeMember']) //* function can be updated later
         ->name('store.member');
+
     
-    Route::get('trainer_register', [RegisteredUserController::class, 'trainer'])
+    Route::get('trainer_register', [RegisteredUserController::class, 'trainer']) //* function can be updated later
         ->name('trainer');
+
+    Route::get('/trainerSubscription/{user_id}', [RegisteredUserController::class, 'trainerSubscription']) //* function can be updated later
+        ->name('trainer.subscribe');
+
+    Route::post('/stripe/subscribe/{user_id}', [PayementController::class, 'store'])
+        ->name('stripe.subsribe');
+    Route::get('/stripe/subscribe/{user_id}', [PayementController::class, 'store'])->name('stripe.subscribe');
     
+
 
     Route::post('register', [RegisteredUserController::class, 'store']);
 
