@@ -12,7 +12,7 @@ class TrainerRequest extends Model
         "payement_id"
     ];
 
-    public function userRequest(){
-        return $this->belongsTo(User::class);
-    }
+    // public function userRequest(){
+    //     return $this->belongsTo(User::class);
+    // }
 }

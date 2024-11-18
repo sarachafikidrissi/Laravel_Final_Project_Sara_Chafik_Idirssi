@@ -23,10 +23,12 @@ return new class extends Migration
             $table->string('gender');
             $table->integer('age');
             $table->integer('calories')->nullable();
+            $table->string('trainersRequestStatus')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
-
+        // "status",
+        // "payement_id"
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
             $table->string('token');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\TrainerRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TrainerRequestController extends Controller
@@ -50,9 +51,14 @@ class TrainerRequestController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TrainerRequest $trainerRequest)
+    public function update(Request $request, User $user)
     {
-        //
+        // dd($user);
+        $user->update([
+            "trainersRequestStatus"=>"approved"
+        ]);
+
+        return back();
     }
 
     /**

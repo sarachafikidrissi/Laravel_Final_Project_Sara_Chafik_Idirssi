@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Models\Role;
+use App\Models\TrainerRequest;
+use App\Models\User;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
@@ -23,9 +25,11 @@ class AppServiceProvider extends ServiceProvider
     {
         $trainerRole = Role::where("role", "trainer")->first();
         $memberRole = Role::where("role", "member")->first();
+        $trainerRequests = User::where('trainersRequestStatus', 'pending')->get();
         view()->share([
             "trainer" => $trainerRole,
-            "member" => $memberRole
+            "member" => $memberRole,
+            'trainerRequests'=>$trainerRequests
         ]);
 
         Blade::directive('checkRole', function (string $role) {

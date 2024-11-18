@@ -26,7 +26,8 @@ class User extends Authenticatable
         'weight',
         'gender',
         'age',
-        'calories'
+        'calories',
+        "trainersRequestStatus",
     ];
 
     /**
@@ -65,7 +66,7 @@ class User extends Authenticatable
         return $this->hasMany(Payement::class);
     }
 
-    public function trainerRequests(){
-        return $this->hasMany(TrainerRequest::class);
-    }
+    // public function trainerRequests() {
+    //     return $this->belongsTo(TrainerRequest::class);
+    // }
 }

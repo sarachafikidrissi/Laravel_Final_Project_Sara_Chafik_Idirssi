@@ -1,7 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
+            @foreach (Auth::user()->roles as $role)
+            {{ $role->role }}{{__(' Dashboard') }}
+            @endforeach
+                
         </h2>
     </x-slot>
 
@@ -20,10 +23,24 @@
                 @endCheckRole
                 @checkRole('admin')
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in! As Admin") }}
+                    @foreach ($trainerRequests as $request)
+                        <div class="flex justify-between">
+                            <span>{{ $request->id }}</span>
+                            <span>{{ $request->name }}</span>
+                            <span>{{ $request->trainersRequestStatus }}</span>
+                            <form method="post" action="/request/approve/{{ $request->id }}" >
+                                @csrf
+                                @method('PUT')
+                                {{-- <input type="text" name="user_id" value={{ $request->id }}> --}}
+                                <button class="bg-gray-900 text-white px-3 py-1.5 rounded-md">Approve</button>
+                            </form>
+                        </div>
+                    @endforeach
                 </div>
                 @endCheckRole
             </div>
         </div>
     </div>
 </x-app-layout>
+
+

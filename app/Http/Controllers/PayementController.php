@@ -37,18 +37,23 @@ class PayementController extends Controller
      */
     public function store(Request $request, $user_id)
     {
+            $user = User::where('id', $user_id)->first();
             // Store payment details in the database
             $payement = Payement::create([
                 'user_id' => $user_id, 
                 'status' => 'completed',
             ]);
 
-            TrainerRequest::create([
-                "user_id"=>$user_id,
-                'status'=>'pending',
-                'payement_id'=>$payement->id
+            // $user->payements()->attach($payement->id);
+
+
+            $user->update([
+                'trainersRequestStatus'=>'pending'
             ]);
-        $user = User::where('id', $user_id)->first();
+            $user->save();
+
+            // $user->trainerRequests()->attach($trainerRequest->id);
+            
         Auth::login($user);
         return redirect(route('dashboard', absolute: false));
 
