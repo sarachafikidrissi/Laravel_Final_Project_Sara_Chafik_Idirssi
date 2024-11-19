@@ -9,6 +9,10 @@
 
         <div class="flex flex-col gap-y-4">
             <div class="flex flex-col items-center">
+                <div class="logo flex justify-center items-center">
+                    <img src="{{ asset('storage/images/logo-removebg-preview.png') }}" alt="logo" class="w-[80px] h-[80px] object-contain">
+                    <h1 class="text-3xl font-bold text-white">GymFit</h1>
+                </div>
                 <h1 class="text-[40px]">Gym Fit Registration Form For Future Members</h1>
                 <span class="text-xl">Join our gym and start your fitness journey today! Please fill out the form
                     to register.</span>
