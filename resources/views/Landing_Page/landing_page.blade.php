@@ -8,6 +8,7 @@
         @include('Landing_Page.components.hero-section')
         @include('Landing_Page.components.about')
         @include('Landing_Page.components.team')
+        @include('Landing_Page.components.sessions')
 
     {{-- Footer --}}
 </div>

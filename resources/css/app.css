@@ -2,7 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+    .span-style {
+      @apply absolute top-0 left-0 w-full h-full origin-center [transform-style:preserve-3d] lg:[transform:rotateY(calc(var(--i)*45deg))_translateZ(350px)] md:[transform:rotateY(calc(var(--i)*45deg))_translateZ(265px)] sm:[transform:rotateY(calc(var(--i)*45deg))_translateZ(216px)] [transform:rotateY(calc(var(--i)*45deg))_translateZ(120px)];
+    }
+    .img-style {
+      @apply absolute top-0 left-0 w-full h-full rounded-sm object-cover [transition:2s] sm:hover:-translate-y-[50px] hover:-translate-y-[20px] hover:scale-[1.3];
+    }
+  }
 
+html , body {
+    overflow-x: hidden
+}
 
 .colors {
     background-color: #ffffff #fff500 #8e8e8e #474747 #000000;
@@ -37,8 +48,3 @@
     
 }
 
-/* .herosection{
-    background-image: url('../../public/landingPage/gym.avif');
-    background-repeat: no-repeat;
-    background-size: auto;
-} */
