@@ -23,7 +23,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::get('/get-fit', [LandingPageController::class, 'index']);
+Route::get('/get-fit', [LandingPageController::class, 'index'])->name('guest-app');
 
 
 

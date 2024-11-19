@@ -3,7 +3,7 @@
         <h1 class="text-3xl font-bold text-white">Get Fit</h1>
     </div>
     <div class="links text-white font-semibold flex gap-x-4">
-        <a href="" class="hover:text-[#333333] cursor-pointer">Home</a>
+        <a href="{{ route('guest-app') }}" class="hover:text-[#333333] cursor-pointer">Home</a>
         <a href="" class="hover:text-[#333333] cursor-pointer">About</a>
         <a href="" class="hover:text-[#333333] cursor-pointer">Team</a>
         <a href="" class="hover:text-[#333333] cursor-pointer">Sessions</a>
