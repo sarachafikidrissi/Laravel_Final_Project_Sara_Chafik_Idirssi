@@ -9,7 +9,7 @@
 
         <div class="flex flex-col gap-y-4">
             <div class="flex flex-col items-center">
-                <h1 class="text-[40px]">Gym Fit Registration Form</h1>
+                <h1 class="text-[40px]">Gym Fit Registration Form For Future Members</h1>
                 <span class="text-xl">Join our gym and start your fitness journey today! Please fill out the form
                     to register.</span>
             </div>
