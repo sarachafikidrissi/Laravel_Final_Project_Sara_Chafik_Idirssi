@@ -1,4 +1,4 @@
-<div class=" w-[80vw] mt-10 mx-auto flex flex-col gap-y-10 items-center text-white relative z-[1]">
+<div id="team" class=" w-[80vw] mt-10 mx-auto flex flex-col gap-y-10 items-center text-white relative z-[1]">
     <div class="relative text-center">
         <!-- Large background text -->
         <h1 class="text-8xl font-bold  text-[#7e736b] opacity-20 select-none">
