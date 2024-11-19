@@ -11,10 +11,15 @@
     </div>  
     
     <div class="flex justify-center mb-20">
-        <div class=" flex flex-wrap w-[75vw] gap-[1vw]">
+        <div class=" flex flex-wrap w-[75vw] gap-[1vw] ">
             @foreach ($teams as $team)
-            <div class="w-[18vw] h-[20vh] bg-white">
-                <img src="{{ asset('storage/' . $team->image) }}" alt="" class="w-full h-full object-cover">      
+            <div class="w-[18vw] h-[20vh] bg-white relative team">
+                <img src="{{ asset('storage/' . $team->image) }}" alt="" class="w-full h-full object-cover">
+                <div class="w-full h-full bg-[#fff500] absolute inset-0 hidden team-info gap-y-2">
+                    <h1 class="text-xl w-[10vw] text-center font-bold text-black uppercase">{{ $team->name }}</h1>
+                    <div class="w-[10vw] h-[2px] bg-black"></div>
+                    <h3 class="font-thin text-xl text-black">Coach</h3>
+                </div>   
             </div>    
             @endforeach
         </div>
