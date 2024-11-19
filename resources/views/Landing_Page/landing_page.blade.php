@@ -10,6 +10,7 @@
         @include('Landing_Page.components.team')
         @include('Landing_Page.components.sessions')
         @include('Landing_Page.components.faq')
+        @include('Landing_Page.components.footer')
 
     {{-- Footer --}}
 </div>

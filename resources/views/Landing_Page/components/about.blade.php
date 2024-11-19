@@ -19,6 +19,7 @@
                 At get fit, we’re more than a gym—we’re a team of passionate trainers dedicated to changing lives through fitness. Joining us means being part of a supportive community, growing your skills, and inspiring others to reach their potential. If you’re ready to make a real difference, we’d love to have you on our team!
             </p>
             {{-- add a call to action here --}}
+            <a href="{{ route('register') }}" class="hover:bg-[#fff500] hover:text-black bg-black border border-[#fff500] text-[#fff500] px-4 py-2 w-fit  font-bold rounded-xl cursor-pointer hover:rounded-none">Join Our Team</a>
         </div>
     </div>
     <div class="flex flex-row-reverse w-full h-full">
@@ -31,6 +32,7 @@
                 Hi there! We’re more than just a gym—we’re a family that cheers you on every step of the way. Whether you’re just starting out or chasing new goals, we’re here with expert trainers, great workouts, and a supportive community to help you thrive. Let’s crush it together! 
             </p>
             {{-- add a call to action here --}}
+            <a href="{{ route('trainer') }}" class="hover:bg-[#FF9D52] rounded-xl hover:rounded-none cursor-pointer  hover:text-black bg-black text-[#FF9D52] border  border-[#FF9D52] px-4 py-2 font-bold w-fit">Become a member</a>
         </div>
     </div>
 </div>
