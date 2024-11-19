@@ -7,6 +7,7 @@
         @include('Landing_Page.components.navbar')
         @include('Landing_Page.components.hero-section')
         @include('Landing_Page.components.about')
+        @include('Landing_Page.components.team')
 
     {{-- Footer --}}
 </div>

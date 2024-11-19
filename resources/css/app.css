@@ -13,6 +13,22 @@
     font-family: "Geist Mono", monospace;
 }
 
+.diagonal-yellow {
+    position: absolute;
+    left: 0%;
+    top: -105%;
+    right: 0%;
+    bottom: 0%;
+    width: 1000vw;
+    height: 250px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: #fff500;
+    -webkit-transform: translate(-1000px, -300px) rotate(-10deg);
+    -ms-transform: translate(-1000px, -300px) rotate(-10deg);
+    transform: translate(-1000px, -300px) rotate(-10deg);
+}
+
 /* .herosection{
     background-image: url('../../public/landingPage/gym.avif');
     background-repeat: no-repeat;
