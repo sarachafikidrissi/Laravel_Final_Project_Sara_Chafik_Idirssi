@@ -9,6 +9,10 @@
     color: #ffffff #ffffff26 #fff500 #333333 #000000;
 }
 
+.landing-page{
+    font-family: "Geist Mono", monospace;
+}
+
 /* .herosection{
     background-image: url('../../public/landingPage/gym.avif');
     background-repeat: no-repeat;
