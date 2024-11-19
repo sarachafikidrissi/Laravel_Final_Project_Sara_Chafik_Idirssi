@@ -1,6 +1,6 @@
 <div class="bg-black h-[10vh] flex items-center justify-around">
     <div class="logo">
-        <h1 class="text-3xl font-bold text-white">Get Fit</h1>
+        <h1 class="text-3xl font-bold text-white">GymFit</h1>
     </div>
     <div class="links text-white font-thin flex gap-x-4 uppercase">
         <a href="{{ route('guest-app') }}" class="hover:text-[#333333] cursor-pointer">Home</a>
