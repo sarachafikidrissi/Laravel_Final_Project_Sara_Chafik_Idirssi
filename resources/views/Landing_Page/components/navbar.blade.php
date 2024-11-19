@@ -11,8 +11,8 @@
         <a href="#faq" class="hover:text-[#333333] cursor-pointer">Faq</a>
     </div>
     <div class="flex gap-x-4 items-center ">
-        <a href="{{ route('register') }}" class="hover:bg-[#fff500] hover:text-black bg-black border border-[#fff500] text-[#fff500] px-4 py-2   rounded-xl cursor-pointer hover:rounded-none">Join Team</a>
-        <a href="{{ route('trainer') }}" class="bg-[#FF9D52] rounded-xl hover:rounded-none cursor-pointer  text-black hover:bg-black hover:text-[#FF9D52] hover:border hover:border-[#FF9D52] px-4 py-2  ">Become a member</a>
+        <a href="{{ route('trainer') }}"   class="hover:bg-[#fff500] hover:text-black bg-black border border-[#fff500] text-[#fff500] px-4 py-2   rounded-xl cursor-pointer hover:rounded-none">Join Team</a>
+        <a  href="{{ route('register') }}" class="bg-[#FF9D52] rounded-xl hover:rounded-none cursor-pointer  text-black hover:bg-black hover:text-[#FF9D52] hover:border hover:border-[#FF9D52] px-4 py-2  ">Become a member</a>
         <div class="flex gap-x-1 text-xl text-white hover:text-[#fff70084]">
             <i class="bi bi-person "></i>
             <a href="{{ route('login') }}" class=" cursor-pointer ">Login</a>
