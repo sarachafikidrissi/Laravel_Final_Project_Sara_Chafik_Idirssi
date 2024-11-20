@@ -1,7 +1,13 @@
 <div class="w-full h-[10vh] bg-black  header-shadow   text-[#f8b781] py-6 px-5 flex justify-between items-center rounded-xl">
     <div class="flex items-center gap-x-2">
         <div class="w-[50px] h-[50px] rounded-full shadow-xl">
-            <img src="{{ asset('storage/images/sessions/zumba.jpg') }} " alt="Profile Image" class="w-full h-full rounded-full">
+            <h1 class="'text-white">{{ $authUser }}</h1> 
+            @if (Auth::user()->id == 1)
+            <img src="{{ asset('storage/images/profile/admin.avif') }}" alt="hhh" class="w-[50px] h-[50px] rounded-full object-cover">
+            @else
+            <img src="{{ asset('storage/images/profile/' . Auth::user()->image) }}" alt="hhh" class="w-[50px] h-[50px] rounded-full object-cover">               
+            @endif
+
         </div>
         <h1 class="text-white text-xl ">Welcome back, {{ Auth::user()->name }} 👋.</h1>
 

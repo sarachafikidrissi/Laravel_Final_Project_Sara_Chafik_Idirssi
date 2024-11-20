@@ -14,6 +14,8 @@ class DashboardController extends Controller
         //
     }
 
+
+    //* admin
     public function admindashboard() {
         return view('Gym.layouts.admin-dash');
     }
@@ -24,6 +26,18 @@ class DashboardController extends Controller
 
     public function showUsers() {
         return view('Gym.layouts.allUsers');
+    }
+
+
+    //* trainer
+
+
+    public function trainerdashboard() {
+        return view('Gym.layouts.trainer.trainer-dashboard');
+    }
+
+    public function trainerSessions() {
+        return view('Gym.layouts.trainer.trainer-sessions');
     }
 
     /**

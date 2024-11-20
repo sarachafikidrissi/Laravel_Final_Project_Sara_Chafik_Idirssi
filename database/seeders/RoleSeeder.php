@@ -28,7 +28,7 @@ class RoleSeeder extends Seeder
 
             $admin = User::create([
                 'name'=>"admin",
-                'email'=>"admin@dmeo.com",
+                'email'=>"admin@demo.com",
                 'password'=>"admin@demo.com",
                 'image'=>"images/profile/admin.avif",
                 'gender'=>'male',

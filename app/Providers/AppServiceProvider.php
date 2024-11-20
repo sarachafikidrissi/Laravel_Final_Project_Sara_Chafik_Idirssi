@@ -54,6 +54,7 @@ class AppServiceProvider extends ServiceProvider
         $totalSubscription = Payement::all()->count();
 
         $users = User::where('id' , '!=' , 1)->get();
+        $authUser = Auth::user();
         
         view()->share([
             "trainer" => $trainerRole,
@@ -65,7 +66,8 @@ class AppServiceProvider extends ServiceProvider
             'totalRequests' => $totalRequests,
             'totalSubscription'=> $totalSubscription,
             'users'=>$users,
-            'requests'=>$requests
+            'requests'=>$requests,
+            'authUser' => $authUser
         ]);
 
         Blade::directive('checkRole', function (string $role) {
