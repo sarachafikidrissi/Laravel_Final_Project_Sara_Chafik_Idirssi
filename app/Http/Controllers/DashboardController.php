@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TrainerRequest;
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class TrainerRequestController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,6 +12,18 @@ class TrainerRequestController extends Controller
     public function index()
     {
         //
+    }
+
+    public function admindashboard() {
+        return view('Gym.layouts.admin-dash');
+    }
+
+    public function trainerRequest(){
+        return view('Gym.layouts.trainer-request');
+    }
+
+    public function showUsers() {
+        return view('Gym.layouts.allUsers');
     }
 
     /**
@@ -35,7 +45,7 @@ class TrainerRequestController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TrainerRequest $trainerRequest)
+    public function show(string $id)
     {
         //
     }
@@ -43,7 +53,7 @@ class TrainerRequestController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TrainerRequest $trainerRequest)
+    public function edit(string $id)
     {
         //
     }
@@ -51,21 +61,15 @@ class TrainerRequestController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, string $id)
     {
-        // dd($request->all());
-        $user->update([
-            "trainersRequestStatus"=>"approved"
-        ]);
-        $user->save();
-
-        return back();
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TrainerRequest $trainerRequest)
+    public function destroy(string $id)
     {
         //
     }

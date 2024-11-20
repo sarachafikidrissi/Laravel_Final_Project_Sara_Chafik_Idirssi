@@ -13,7 +13,10 @@
 
 html , body {
     overflow-x: hidden
+    
 }
+
+
 
 .colors {
     background-color: #ffffff #fff500 #8e8e8e #474747 #000000;
@@ -47,4 +50,13 @@ html , body {
     align-items: center;
     
 }
+.header-shadow {
+  box-shadow: 10px 15px 25px 0px rgba(0, 0, 0, 0.09);
+}
+.spread-shadow {
+  box-shadow: 10px 20px 23px 25px rgba(0, 0, 0, 0.09);
+}
 
+.card-shadow {
+  box-shadow: 6px 2px 9px 0px rgba(0, 0, 0, 0.33);
+}

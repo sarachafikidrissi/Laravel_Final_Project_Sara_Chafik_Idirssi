@@ -150,5 +150,11 @@ class RegisteredUserController extends Controller
     }
 
 
+    public function remove(Request $request, User $user) {
+        $user->delete();
+        return back();
+    }
+
+
     
 }
