@@ -1,7 +1,7 @@
 <!-- Modal -->
-<div id="sessionFormModal" class="fixed z-10 inset-0 overflow-y-auto hidden">
-    <div class="flex items-center justify-center min-h-screen">
-        <div class="bg-white w-1/2 p-6 rounded shadow-md">
+<div id="sessionFormModal" class="fixed z-10 inset-0 top-10 overflow-y-auto hidden">
+    <div class="flex items-center justify-center">
+        <div class="bg-white w-1/2 px-4 rounded shadow-md mb-4">
             <div class="flex justify-end">
                 <!-- Close Button -->
                 <button id="closeSessionForm" class="text-gray-700 hover:text-red-500">
@@ -12,36 +12,35 @@
                     </svg>
                 </button>
             </div>
-            @if (Auth::user()->trainersRequestStatus == 'pending')
-                <h1 class="text-xl font-bold mb-4">Your request is not Approved yet , you are not allowed to create
-                    sessions</h1>
-            @else
-                <h2 class="text-2xl font-bold mb-4">Add Session</h2>
+                <h2 class="text-2xl font-bold ">Add Session</h2>
 
                 <form enctype="multipart/form-data" action="{{ route('create.session') }}" method="post">
                     @csrf
                     <input type="hidden" name="user_id" value={{ Auth::user()->id }}>
-                    <div class="mb-4">
+                    <div class="mb-2">
                         <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name</label>
                         <input type="text" id="name" name="name" placeholder="Enter your name"
                             class="w-full p-2 border rounded-md focus:outline-none focus:border-[#FF9D52]">
                     </div>
-                    <div class="mb-4">
+                    <div class="mb-2">
                         <label for="description" class="block text-gray-700 text-sm font-bold mb-2">Description</label>
                         <textarea id="description" name="description" placeholder="Enter a description"
                             class="w-full p-2 border rounded-md focus:outline-none focus:border-[#FF9D52]"></textarea>
                     </div>
-                    <div class="mb-4">
-                        <label for="start" class="block text-gray-700 text-sm font-bold mb-2">Event Start Day/
-                            Time</label>
-                        <input type="datetime-local" id="start" name="start"
-                            class="w-full p-2 border rounded-md focus:outline-none focus:border-blue-500">
-                    </div>
-                    <div class="mb-4">
-                        <label for="end" class="block text-gray-700 text-sm font-bold mb-2">Event End Day/
-                            Time</label>
-                        <input type="datetime-local" id="end" name="end"
-                            class="w-full p-2 border rounded-md focus:outline-none focus:border-blue-500">
+                    <div class="flex w-full justify-between">
+                        <div class="mb-2">
+                            <label for="start" class="block text-gray-700 text-sm font-bold mb-2">Event Start Day/
+                                Time</label>
+                            <input type="datetime-local" id="start" name="start"
+                                class="w-full p-2 border rounded-md focus:outline-none focus:border-blue-500">
+                        </div>
+                        <div class="mb-2">
+                            <label for="end" class="block text-gray-700 text-sm font-bold mb-2">Event End Day/
+                                Time</label>
+                            <input type="datetime-local" id="end" name="end"
+                                class="w-full p-2 border rounded-md focus:outline-none focus:border-blue-500">
+                        </div>
+
                     </div>
                     <div class="mt-4">
                         <label for="image" class="block text-gray-700 text-sm font-bold mb-2">Session Cover</label>
@@ -61,42 +60,44 @@
                             </label>
                         </div>
                     </div>
-                    <div class="w-[50%] mt-4">
-                        <label for="" class="block text-gray-700 text-sm font-bold mb-2">Status</label>
-                        <div class="mt-2">
-                            <label class="inline-flex items-center">
-                                <input type="radio" name="status" value="free"
-                                    class="focus:ring-[#FF9D52] focus:ring-offset-2 text-yellow-400" required>
-                                <span class="ml-2">Free</span>
-                            </label>
+                    <div class="w-full mt-4 flex justify-between">
+                        <div>
+                            <label for="" class="block text-gray-700 text-sm font-bold mb-2">Status</label>
+                            <div class="mt-2">
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="status" value="free"
+                                        class="focus:ring-[#FF9D52] focus:ring-offset-2 text-yellow-400" required>
+                                    <span class="ml-2">Free</span>
+                                </label>
+                            </div>
+                            <div class="mt-2">
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="status" value="premium"
+                                        class="focus:ring-[#FF9D52] focus:ring-offset-2 text-yellow-400" required>
+                                    <span class="ml-2">Premium</span>
+                                </label>
+                            </div>
                         </div>
-                        <div class="mt-2">
-                            <label class="inline-flex items-center">
-                                <input type="radio" name="status" value="premium"
-                                    class="focus:ring-[#FF9D52] focus:ring-offset-2 text-yellow-400" required>
-                                <span class="ml-2">Premium</span>
-                            </label>
-                        </div>
-                        <div class="mb-4">
+                        <div class="mb-2">
                             <label for="price" class="block text-gray-700 text-sm font-bold mb-2">If premium, Enter
                                 Price</label>
                             <input type="number" id="price" name="price" min="1"
                                 placeholder="Enter the price"
                                 class="w-full p-2 border rounded-md focus:outline-none focus:border-[#FF9D52]">
                         </div>
-                        <div class="mb-4">
-                            <label for="spots" class="block text-gray-700 text-sm font-bold mb-2">Spots</label>
-                            <input type="number" id="spots" name="spots" min="1"
-                                placeholder="Enter the number of spots"
-                                class="w-full p-2 border rounded-md focus:outline-none focus:border-[#FF9D52]">
-                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <label for="spots" class="block text-gray-700 text-sm font-bold mb-2">Spots</label>
+                        <input type="number" id="spots" name="spots" min="1"
+                            placeholder="Enter the number of spots"
+                            class="w-full p-2 border rounded-md focus:outline-none focus:border-[#FF9D52]">
                     </div>
                     <button type="submit"
-                        class="bg-[#FF9D52] text-white font-bold py-2 px-4 rounded hover:bg-[#FF9D52] focus:ring focus:ring-offset-2 focus:ring-[#FF9D52]">
+                        class="bg-[#FF9D52] text-white font-bold py-2 px-4 mb-4 w-full rounded hover:bg-[#FF9D52] focus:ring focus:ring-offset-2 focus:ring-[#FF9D52]">
                         Add
                     </button>
+                    
                 </form>
-            @endif
 
         </div>
 

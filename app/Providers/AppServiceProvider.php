@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Payement;
 use App\Models\Role;
 use App\Models\TrainerRequest;
+use App\Models\TrainerSession;
 use App\Models\User;
 use App\Models\UserRole;
 use Illuminate\Support\Facades\Blade;
@@ -55,6 +56,7 @@ class AppServiceProvider extends ServiceProvider
 
         $users = User::where('id' , '!=' , 1)->get();
         $authUser = Auth::user();
+
         
         view()->share([
             "trainer" => $trainerRole,
@@ -67,7 +69,7 @@ class AppServiceProvider extends ServiceProvider
             'totalSubscription'=> $totalSubscription,
             'users'=>$users,
             'requests'=>$requests,
-            'authUser' => $authUser
+            'authUser' => $authUser,
         ]);
 
         Blade::directive('checkRole', function (string $role) {

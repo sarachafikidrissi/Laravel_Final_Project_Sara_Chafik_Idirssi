@@ -6,6 +6,7 @@ use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TrainerRequestController;
 use App\Http\Controllers\TrainerSessionController;
+use App\Models\TrainerSession;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +25,7 @@ Route::middleware('auth')->group(function () {
 
     // * admin
     Route::put('/request/approve/{user}', [TrainerRequestController::class, 'update'])->name('request.approve');
-    Route::get('/admin/dashboard', [DashboardController::class, 'admindashboard'])->name('admin.dashboard');
+    Route::get('/main/dashboard', [DashboardController::class, 'admindashboard'])->name('main.dashboard');
     Route::get('/admin/trainer/request', [DashboardController::class, 'trainerRequest'])->name('admin.requests');
     Route::get('/admin/all-users', [DashboardController::class, 'showUsers'])->name('admin.users');
     Route::put('/request/approve/{user}', [TrainerRequestController::class, 'update'])->name('request.approve');
@@ -33,11 +34,17 @@ Route::middleware('auth')->group(function () {
 
     //*trainer
 
-    Route::get('/trainer/dashboard', [DashboardController::class, 'trainerdashboard'])->name('trainer.dashboard');
+    Route::get('/main/dashboard', [DashboardController::class, 'trainerdashboard'])->name('main.dashboard');
     Route::get('/trainer/sessions', [DashboardController::class, 'trainerSessions'])->name('trainer.sessions');
 
         //*sessions
     Route::post('/create/session', [TrainerSessionController::class, 'store'])->name('create.session');
+    Route::delete('/session/destroy/{session}', [TrainerSessionController::class, 'destroy'])->name('session.destroy');
+    Route::get('/session/edit/{session}', [TrainerSessionController::class, 'edit'])->name('session.edit');
+    Route::put('/session/update/{session}', [TrainerSessionController::class, 'update'])->name('session.update');
+
+        //* Exercices
+    Route::get('trainer/exercices', [DashboardController::class, 'trainerExercices'])->name('trainer.exercices');
 
 });
 

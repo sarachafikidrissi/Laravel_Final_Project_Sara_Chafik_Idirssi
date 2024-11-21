@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TrainerSession;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TrainerSessionController extends Controller
 {
@@ -79,24 +80,58 @@ class TrainerSessionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TrainerSession $trainerSession)
-    {
-        //
+    public function edit(TrainerSession $session)
+    {   
+        return view('Gym.layouts.modals.update-session', compact('session'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TrainerSession $trainerSession)
+    public function update(Request $request, TrainerSession $session)
     {
-        //
+        if($request->hasFile('image'))
+        {
+            if($request->status == 'premium'){
+                $request->validate([
+                    "status" => 'required'
+                ]);
+            }
+            $path = storage_path("app/public/images/sessions/" . $session->image);
+            if (file_exists($path)) {
+                 unlink($path);
+                 $request->image->move(storage_path("app/public/images/sessions"), $session->image);
+            };
+
+        }
+        $session->update([
+            "user_id" => $request->user_id,
+            "name" => $request->name,
+            "description" => $request->description,
+            "start" => $request->start. ":00",
+            "end" => $request->end. ":00",
+            "status" => $request->status,
+            "spots" => $request->spots,
+        ]);
+        return redirect()->intended(route('trainer.sessions'));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TrainerSession $trainerSession)
+    public function destroy(TrainerSession $session)
     {
-        //
+
+        $path = storage_path("app/public/images/sessions/" . $session->image);
+        if (file_exists($path)) {
+             unlink($path);
+             $session->delete();
+        };
+
+        return redirect()->intended(route('trainer.sessions'));
+
+
+        
+        
     }
 }

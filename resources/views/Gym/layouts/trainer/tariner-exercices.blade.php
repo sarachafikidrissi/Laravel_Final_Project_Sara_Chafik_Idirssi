@@ -10,19 +10,17 @@
             @include('Gym.layouts.headbar')
             <div class="flex flex-col  ">
                 <div class="w-full flex  ps-14">
-                    @checkRole('trainer')
-                        @if (Auth::user()->trainersRequestStatus == 'pending')
-                            <h1 class="text-md text-red-900 mb-4"><i class="bi bi-exclamation-triangle"></i> Can't add sessions
-                                for the moment , wait until your request will be approved by admin</h1>
-                        @else
-                            <button id="openSessionForm"
-                                class="text-lg font-semibold text-[#ee7605e3] border px-2 rounded-md border-[#ee7605e3]">
-                                <i class="bi bi-plus-circle text-xl text-[#ee7605e3]"></i>
-                                Add Session
-                            </button>
-                            @include('Gym.layouts.modals.add-session')
-                        @endif
-                    @endCheckRole
+                    @if (Auth::user()->trainersRequestStatus == 'pending')
+                        <h1 class="text-md text-red-900 mb-4"><i class="bi bi-exclamation-triangle"></i> Can't add sessions
+                            for the moment , wait until your request will be approved by admin</h1>
+                    @else
+                        <button id="openSessionForm"
+                            class="text-lg font-semibold text-[#ee7605e3] border px-2 rounded-md border-[#ee7605e3]">
+                            <i class="bi bi-plus-circle text-xl text-[#ee7605e3]"></i>
+                            Add Session
+                        </button>
+                        @include('Gym.layouts.modals.add-session')
+                    @endif
                 </div>
             </div>
 
@@ -38,27 +36,20 @@
                             <div class="relative -mt-16 w-[80%] h-[12vh] p-2 card-shadow rounded-md bg-white m-10">
                                 <a href="#"
                                     class="font-semibold text-sm inline-block hover:text-[#ee7605e3] transition duration-500 ease-in-out mb-2">{{ $session->name }}</a>
-                                @checkRole('trainer')
-                                    <div class="flex justify-between">
+                                <div class="flex justify-between">
+                                    <a href="#"
+                                        class=" inline-block text-[#ee7605e3] hover:text-[#ee4305e3] transition duration-500 ease-in-out mb-2">see more</a>
+                                    <div>
                                         <a href="#"
-                                            class=" inline-block text-[#ee7605e3] hover:text-[#ee4305e3] transition duration-500 ease-in-out mb-2">see
-                                            more</a>
-                                        <div class="flex ">
-                                            <form method="post" action="/session/destroy/{{ $session->id }}">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button href=""
-                                                    class="font-semibold text-xl inline-block text-[#ee0d05e3] hover:text-[#ee4305e3] transition duration-500 ease-in-out mb-2">
-                                                    <i class="bi bi-trash"></i></button>
-                                            </form>
-                                            <a href="/session/edit/{{ $session->id }}"
-                                                class="font-semibold text-xl inline-block text-[#05eebbe3] hover:text-[#ee4305e3] transition duration-500 ease-in-out mb-2"><i
-                                                    class="bi bi-pencil-square"></i></a>
-
-                                        </div>
-
+                                            class="font-semibold text-xl inline-block text-[#ee0d05e3] hover:text-[#ee4305e3] transition duration-500 ease-in-out mb-2">
+                                            <i class="bi bi-trash"></i></a>
+                                        <a href="#"
+                                            class="font-semibold text-xl inline-block text-[#05eebbe3] hover:text-[#ee4305e3] transition duration-500 ease-in-out mb-2"><i
+                                                class="bi bi-pencil-square"></i></a>
                                     </div>
-                                @endCheckRole
+
+                                </div>
+
                             </div>
 
                         </div>

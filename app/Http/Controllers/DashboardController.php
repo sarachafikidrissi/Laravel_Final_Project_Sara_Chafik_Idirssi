@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TrainerSession;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -17,27 +19,36 @@ class DashboardController extends Controller
 
     //* admin
     public function admindashboard() {
+
         return view('Gym.layouts.admin-dash');
     }
-
+    
     public function trainerRequest(){
         return view('Gym.layouts.trainer-request');
     }
-
+    
     public function showUsers() {
         return view('Gym.layouts.allUsers');
     }
-
-
+    
+    
     //* trainer
-
-
+    
+    
     public function trainerdashboard() {
-        return view('Gym.layouts.trainer.trainer-dashboard');
+        $totalSessions = TrainerSession::where('user_id', Auth::user()->id)->count();
+        return view('Gym.layouts.trainer.trainer-dashboard', compact('totalSessions'));
+    }
+    
+    public function trainerSessions() {
+        $sessions = TrainerSession::where('user_id', Auth::user()->id)->get();
+        return view('Gym.layouts.trainer.trainer-sessions', compact('sessions'));
     }
 
-    public function trainerSessions() {
-        return view('Gym.layouts.trainer.trainer-sessions');
+    public function trainerExercices() {
+        $sessions = TrainerSession::where('user_id', Auth::user()->id)->get();
+
+        return view('Gym.layouts.trainer.tariner-exercices', compact('sessions'));
     }
 
     /**

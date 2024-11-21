@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <div class="flex p-2 gap-x-4 bg-black/5">
+    <div class="flex p-2 gap-x-4 bg-black/5 h-[100vh]">
         <div class="w-[20vw] h-[95vh] rounded-xl bg-black text-white ">
             @include('Gym.layouts.sidebar')    
         </div>
@@ -14,7 +14,7 @@
                   <div class="bg-white card-shadow  shadow-lg rounded-lg p-6 text-black flex items-center justify-between">
                     <div>
                       <h2 class="text-lg font-semibold text-[#ee7605e3]">Total Sessions</h2>
-                      <p class="text-xl font-bold mt-4">{{ $totalMembers }}</p>
+                      <p class="text-xl font-bold mt-4">{{  $totalSessions }}</p>
                     </div>
                     <div class="border border-[#ff7b00e3] p-4 w-[15px] h-[15px] rounded-full relative">
                         <i class="bi bi-people absolute translate-y-[-50%] translate-x-[-50%]"></i>
