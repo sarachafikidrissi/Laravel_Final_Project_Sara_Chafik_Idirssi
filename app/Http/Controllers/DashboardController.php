@@ -51,6 +51,10 @@ class DashboardController extends Controller
         return view('Gym.layouts.trainer.tariner-exercices', compact('sessions'));
     }
 
+    public function sessionCalendar() {
+        return view('Gym.layouts.trainer.trainer-calendar');
+    }
+
     /**
      * Show the form for creating a new resource.
      */

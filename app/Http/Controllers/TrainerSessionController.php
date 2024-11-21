@@ -21,7 +21,24 @@ class TrainerSessionController extends Controller
      */
     public function create()
     {
-        //
+        $sessions = TrainerSession::all();
+
+        $sessions = $sessions->map(function ($e) {
+            return [
+                "id" => $e->id,
+                "start" => $e->start,
+                "end" => $e->end,
+                "owner"=> $e->user_id,
+                'title'=>$e->name,
+                "backgroundColor"=> '#ee7605e3', // Orange
+                "borderColor"=> '#ee7605e3',
+                "textColor"=> 'white'
+            ];
+        });
+
+        return response()->json([
+            "events" => $sessions
+        ]);
     }
 
     /**
@@ -128,10 +145,6 @@ class TrainerSessionController extends Controller
              $session->delete();
         };
 
-        return redirect()->intended(route('trainer.sessions'));
-
-
-        
-        
+        return redirect()->intended(route('trainer.sessions'));   
     }
 }

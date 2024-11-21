@@ -42,6 +42,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/session/destroy/{session}', [TrainerSessionController::class, 'destroy'])->name('session.destroy');
     Route::get('/session/edit/{session}', [TrainerSessionController::class, 'edit'])->name('session.edit');
     Route::put('/session/update/{session}', [TrainerSessionController::class, 'update'])->name('session.update');
+    Route::get('/create/session', [TrainerSessionController::class, 'create'])->name('create.session');
+
+        //* Session calendar
+
+    Route::get('/session/calendar', [DashboardController::class, 'sessionCalendar'])->name('session.calendar');
 
         //* Exercices
     Route::get('trainer/exercices', [DashboardController::class, 'trainerExercices'])->name('trainer.exercices');

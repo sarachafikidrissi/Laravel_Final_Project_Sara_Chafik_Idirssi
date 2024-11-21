@@ -61,6 +61,49 @@ html , body {
   box-shadow: 6px 2px 9px 0px rgba(0, 0, 0, 0.33);
 }
 
+/* Style the calendar background */
+#calendar {
+  background-color: white; /* White background */
+  border-radius: 15px;      /* Rounded corners */
+  padding: 10px;
+  color: black;            /* Default text color */
+}
+
+/* Customize the toolbar buttons */
+.fc-toolbar .fc-button {
+  background-color: #ee7605e3; /* Orange background */
+  color: white;               /* White text */
+  border: none;
+  border-radius: 5px;
+}
+
+.fc-toolbar .fc-button:hover {
+  background-color: #d96b04;  /* Darker orange */
+}
+
+/* Change the title color */
+.fc-toolbar-title {
+  color: black;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Customize the grid cell background */
+.fc-daygrid-day {
+  background-color: #f5f5f5; /* Light gray */
+  border: 1px solid #eeeeee;
+}
+
+/* Customize the current time indicator */
+.fc-now-indicator {
+  background-color: #ee7605e3; /* Orange */
+}
+
+/* Highlight weekends */
+.fc-day-sat, .fc-day-sun {
+  background-color: #fff2e0; /* Light orange tint */
+}
+
 /* .test {
   background-image: url('../../public/landingPage/gym.avif');
   background-repeat: no-repeat;
