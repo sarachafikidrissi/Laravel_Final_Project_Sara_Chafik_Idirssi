@@ -160,12 +160,18 @@
                     if (validateOwner(info)) {
                         openSession.click();
                         sessionName.textContent = "Update or Delete Your Session"
+                        deleteSessionForm.action = `/session/destroy/${sessionId}`
+                        updateLink.href = `/session/edit/${sessionId}`
+                        
+                        
+                        
                         
                         // deleteEventForm.action = `/calendar/delete/${eventId}`
                         // deleteEventBtn.click()
                     }
 
                 },
+
 
 
 
