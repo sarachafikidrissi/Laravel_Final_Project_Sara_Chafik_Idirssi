@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\TrainerSession;
+use App\Models\UserRole;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -22,14 +23,16 @@ class TrainerSessionController extends Controller
     public function create()
     {
         $sessions = TrainerSession::all();
-
+        
         $sessions = $sessions->map(function ($e) {
+            $userRole = UserRole::where('user_id', $e->user_id)->first();
             return [
                 "id" => $e->id,
                 "start" => $e->start,
                 "end" => $e->end,
                 "owner"=> $e->user_id,
                 'title'=>$e->name,
+                'role'=>$userRole,
                 "backgroundColor"=> '#ee7605e3', // Orange
                 "borderColor"=> '#ee7605e3',
                 "textColor"=> 'white'

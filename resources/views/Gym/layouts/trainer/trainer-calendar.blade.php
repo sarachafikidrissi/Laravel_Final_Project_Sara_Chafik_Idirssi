@@ -15,7 +15,7 @@
                      </button>
                     @include('Gym.layouts.modals.calendar-modal')
                      
-                     <script type="text/javascript">
+                     {{-- <script type="text/javascript">
                          window.openModal = function(modalId) {
                              document.getElementById(modalId).style.display = 'block'
                              document.getElementsByTagName('body')[0].classList.add('overflow-y-hidden')
@@ -37,7 +37,7 @@
                                  })
                              }
                          };
-                     </script>
+                     </script> --}}
                     @checkRole('trainer')
                         @if (Auth::user()->trainersRequestStatus == 'pending')
                             <h1 class="text-md text-red-900 mb-4"><i class="bi bi-exclamation-triangle"></i> Can't add sessions
@@ -162,12 +162,6 @@
                         sessionName.textContent = "Update or Delete Your Session"
                         deleteSessionForm.action = `/session/destroy/${sessionId}`
                         updateLink.href = `/session/edit/${sessionId}`
-                        
-                        
-                        
-                        
-                        // deleteEventForm.action = `/calendar/delete/${eventId}`
-                        // deleteEventBtn.click()
                     }
 
                 },

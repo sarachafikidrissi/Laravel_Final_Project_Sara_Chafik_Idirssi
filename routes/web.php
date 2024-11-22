@@ -25,7 +25,7 @@ Route::middleware('auth')->group(function () {
 
     // * admin
     Route::put('/request/approve/{user}', [TrainerRequestController::class, 'update'])->name('request.approve');
-    Route::get('/main/dashboard', [DashboardController::class, 'admindashboard'])->name('main.dashboard');
+    Route::get('/admin/dashboard', [DashboardController::class, 'admindashboard'])->name('admin.dashboard');
     Route::get('/admin/trainer/request', [DashboardController::class, 'trainerRequest'])->name('admin.requests');
     Route::get('/admin/all-users', [DashboardController::class, 'showUsers'])->name('admin.users');
     Route::put('/request/approve/{user}', [TrainerRequestController::class, 'update'])->name('request.approve');
