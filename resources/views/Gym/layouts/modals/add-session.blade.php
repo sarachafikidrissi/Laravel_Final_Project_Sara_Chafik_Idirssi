@@ -96,7 +96,6 @@
                         class="bg-[#FF9D52] text-white font-bold py-2 px-4 mb-4 w-full rounded hover:bg-[#FF9D52] focus:ring focus:ring-offset-2 focus:ring-[#FF9D52]">
                         Add
                     </button>
-                    
                 </form>
 
         </div>

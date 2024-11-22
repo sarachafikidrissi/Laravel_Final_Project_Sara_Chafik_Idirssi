@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Exercice;
 use App\Models\TrainerSession;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,9 +47,10 @@ class DashboardController extends Controller
     }
 
     public function trainerExercices() {
-        $sessions = TrainerSession::where('user_id', Auth::user()->id)->get();
 
-        return view('Gym.layouts.trainer.tariner-exercices', compact('sessions'));
+        $exercices = Exercice::where('user_id', Auth::user()->id)->get();
+
+        return view('Gym.layouts.trainer.tariner-exercices', compact('exercices'));
     }
 
     public function sessionCalendar() {

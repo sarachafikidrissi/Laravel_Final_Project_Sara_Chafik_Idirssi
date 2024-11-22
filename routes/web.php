@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ExerciceController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TrainerRequestController;
@@ -50,6 +51,11 @@ Route::middleware('auth')->group(function () {
 
         //* Exercices
     Route::get('trainer/exercices', [DashboardController::class, 'trainerExercices'])->name('trainer.exercices');
+
+    Route::post('/create/exercices', [ExerciceController::class, 'store'])->name('exercice.store');
+
+
+
 
 });
 
