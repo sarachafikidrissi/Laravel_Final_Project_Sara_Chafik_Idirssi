@@ -9,9 +9,15 @@
     </div>
     <div class="w-[80vw] flex flex-col gap-y-2 bg-black/5p-2">
         @include('Gym.layouts.headbar')
-        @include('Gym.layouts.contents')
-          
-            
+        <div class="flex  justify-between">
+            <div>member dashboard is here</div>
+
+            @include('Gym.layouts.member.right-sidebar')
+        </div>
+
+
+        
+        
     </div>
 
 @endsection

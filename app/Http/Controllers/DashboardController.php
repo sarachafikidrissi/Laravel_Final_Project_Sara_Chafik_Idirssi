@@ -62,7 +62,8 @@ class DashboardController extends Controller
     //* Member
 
     public function memberDashboard(){
-        return view('Gym.layouts.member.member-dahsboard');
+        $exercice = Exercice::where('id', 1)->first();
+        return view('Gym.layouts.member.member-dahsboard', compact('exercice'));
     }
 
     /**
