@@ -25,7 +25,7 @@
                   <div class="bg-white card-shadow text-black  rounded-lg p-6 flex items-center justify-between">
                     <div>
                       <h2 class="text-lg font-semibold text-[#ee7605e3]">Total Exercices</h2>
-                      <p class="text-xl font-bold mt-4">{{  $trainersTotal }}</p>
+                      <p class="text-xl font-bold mt-4">{{  $totalExercices }}</p>
                     </div>
                     <div class="border border-[#ff7b00e3] p-4 w-[15px] h-[15px] rounded-full relative">
                         <i class="bi bi-people absolute translate-y-[-50%] translate-x-[-50%]"></i>

@@ -12,4 +12,9 @@ class Exercice extends Model
         "image",
         "calories",
     ];
+
+
+    public function trainerSessions() {
+        return $this->belongsToMany(TrainerSession::class, 'trainer_session_exercices');
+    }
 }

@@ -15,7 +15,10 @@
                 @checkRole('trainer')
                     @include('Gym.layouts.trainer.trainer-sidebar')
                 @endCheckRole
-                
+
+                @checkRole('member')
+                    @include('Gym.layouts.member.member-sidebar')
+                @endCheckRole
             </div>
         </div>
     </div>

@@ -27,7 +27,7 @@
                     <div class="flex flex-col gap-y-2 ">
                         <div class="shrink-0">
                             <img id="preview_img" class="w-full h-[200px] object-cover"
-                                src="https://lh3.googleusercontent.com/a-/AFdZucpC_6WFBIfaAbPHBwGM9z8SxyM1oV4wB4Ngwp_UyQ=s96-c"
+                                src="{{ asset('landingPage/gym-banner.avif') }}"
                                 alt="Current profile photo" />
                         </div>
                         <label class="block">

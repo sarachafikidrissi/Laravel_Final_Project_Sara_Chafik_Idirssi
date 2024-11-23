@@ -17,4 +17,9 @@ class TrainerSession extends Model
         "image",
         "spots"
     ];
+
+
+    public function exercices() {
+        return $this->belongsToMany(Exercice::class, 'trainer_session_exercices');
+    }
 }

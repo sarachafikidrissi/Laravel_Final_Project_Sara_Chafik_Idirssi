@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Exercice;
 use App\Models\Payement;
 use App\Models\Role;
 use App\Models\TrainerRequest;

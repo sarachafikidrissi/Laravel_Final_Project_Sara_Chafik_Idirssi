@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Exercice;
+use App\Models\TrainerSession;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ExerciceController extends Controller
 {
@@ -54,6 +57,20 @@ class ExerciceController extends Controller
         return back();
 
 
+    }
+
+    public function append(Request $request) {
+
+        $exercice = Exercice::where('id', $request->exercice_id)->first();
+        $session = TrainerSession::where('id', $request->trainer_session_id)->first();
+        
+
+
+        
+        $exercice->trainerSessions()->attach($session);
+        return back();
+
+        
     }
 
     /**

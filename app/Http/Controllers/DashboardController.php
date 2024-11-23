@@ -38,7 +38,8 @@ class DashboardController extends Controller
     
     public function trainerdashboard() {
         $totalSessions = TrainerSession::where('user_id', Auth::user()->id)->count();
-        return view('Gym.layouts.trainer.trainer-dashboard', compact('totalSessions'));
+        $totalExercices = Exercice::where('user_id', Auth::user()->id)->count();
+        return view('Gym.layouts.trainer.trainer-dashboard', compact('totalSessions', 'totalExercices'));
     }
     
     public function trainerSessions() {
@@ -47,14 +48,21 @@ class DashboardController extends Controller
     }
 
     public function trainerExercices() {
-
+        $sessions = TrainerSession::where('user_id', Auth::user()->id)->get();
         $exercices = Exercice::where('user_id', Auth::user()->id)->get();
 
-        return view('Gym.layouts.trainer.tariner-exercices', compact('exercices'));
+        return view('Gym.layouts.trainer.tariner-exercices', compact('exercices', 'sessions'));
     }
 
     public function sessionCalendar() {
         return view('Gym.layouts.trainer.trainer-calendar');
+    }
+
+
+    //* Member
+
+    public function memberDashboard(){
+        return view('Gym.layouts.member.member-dahsboard');
     }
 
     /**

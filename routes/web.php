@@ -54,6 +54,12 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/create/exercices', [ExerciceController::class, 'store'])->name('exercice.store');
 
+    Route::post('/append/exercice', [ExerciceController::class, 'append'])->name('append.exercice');
+
+    //* Member
+
+        Route::get('/member/dashboard', [DashboardController::class, 'memberDashboard'])->name('member.dashboard');
+
 
 
 

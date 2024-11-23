@@ -4,7 +4,7 @@
     @endCheckRole
 
     @checkRole('member')
-        @include('Gym.layouts.member.member-dashboard')
+        @include('Gym.layouts.member.member-dahsboard')
     @endCheckRole
 
 </div>
