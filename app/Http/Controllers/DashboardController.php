@@ -6,6 +6,7 @@ use App\Models\Exercice;
 use App\Models\TrainerSession;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -63,6 +64,15 @@ class DashboardController extends Controller
 
     public function memberDashboard(){
         $exercice = Exercice::where('id', 1)->first();
+        // to be used in displaying popluar trainers
+        $mostRepetedUserInSessions = TrainerSession::select('user_id', DB::raw('COUNT(user_id) as count'))
+            ->groupBy('user_id')
+            ->orderBy('count', 'desc')
+            ->get();
+
+        
+
+        
         return view('Gym.layouts.member.member-dahsboard', compact('exercice'));
     }
 

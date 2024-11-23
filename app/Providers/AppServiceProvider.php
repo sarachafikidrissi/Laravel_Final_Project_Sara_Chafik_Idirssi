@@ -45,9 +45,14 @@ class AppServiceProvider extends ServiceProvider
             $query->where('role', $roleName);
         })->whereBetween('id', [2, 9])->get();
 
+        $popularTrianers = User::whereHas('roles', function ($query) use ($roleName) {
+            $query->where('role', $roleName);
+        })->whereBetween('id', [2, 3])->get();
+
         $trainersTotal = User::whereHas('roles', function ($query) use ($roleName) {
             $query->where('role', $roleName);
         })->count();
+
 
         
 
@@ -71,6 +76,7 @@ class AppServiceProvider extends ServiceProvider
             'users'=>$users,
             'requests'=>$requests,
             'authUser' => $authUser,
+            'popularTrianers' => $popularTrianers
         ]);
 
         Blade::directive('checkRole', function (string $role) {

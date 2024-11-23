@@ -9,7 +9,7 @@
             @endif
 
         </div>
-        <h1 class="text-white text-xl ">Welcome back, {{ Auth::user()->name }} 👋.</h1>
+        <h1 class="text-sm ">Welcome back, <span class=" font-semibold text-sm">{{ Auth::user()->name }} </span>👋.</h1>
 
     </div>
 

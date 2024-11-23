@@ -49,7 +49,7 @@
         </div>
     </div>
 
-    <div class="flex w-full flex-1 flex-col rounded-xl bg-white/10  shadow-md p-4">
+    <div class="flex w-full  flex-col rounded-xl bg-white/10  shadow-md p-4">
         <!-- Month and Year Header -->
         <div class="flex justify-between items-center w-full  text-white">
             <button class="text-gray-300 hover:text-f9ac54 transition duration-300" id="prev-month">
