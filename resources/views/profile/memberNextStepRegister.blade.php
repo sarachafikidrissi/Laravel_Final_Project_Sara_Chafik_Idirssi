@@ -1,4 +1,4 @@
-@extends('Gym.index')
+{{-- @extends('Gym.index')
 
 @section('content')
 
@@ -120,5 +120,130 @@
 </div>
     
 @endsection
+     --}}
+
+
+
+@extends('Gym.index')
+
+@section('content')
+<div class="">
+    @include('Gym.layouts.nav')
+        <div class=" w-screen flex flex-row-reverse register  ">
+            <div class="w-[50%] flex  justify-center items-center h-[90vh] pt-4">
+                <div class="w-[80%] h-fit  flex flex-col justify-center  p-6  rounded-md shadow-lg bg-black bg-opacity-[0.9]">
+                         
+            <form method="POST" action="{{ route('store.member') }}">
+                @csrf
+            
+                <!-- Hidden input for user ID -->
+                <input type="hidden" name="user" value="{{ $user->id }}">
+            
+                <!-- Weight -->
+                <div class="">
+                    <label for="weight" class="text-[#FF9D52] font-medium">Weight</label>
+                    <input 
+                        id="weight" 
+                        class="block mt-1 w-full focus:ring-yellow-500 focus:border-yellow-500 text-black" 
+                        type="number" 
+                        min="30" 
+                        name="weight" 
+                        placeholder="Enter your weight (kg)" 
+                        
+                        value="{{ old('weight') }}" 
+                        autofocus>
+                    @error('weight')
+                        <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
+                    @enderror
+                </div>
+            
+                <!-- Height -->
+                <div class="mt-4">
+                    <label for="height" class="text-[#FF9D52] font-medium">Height</label>
+                    <input 
+                        id="height" 
+                        class="block mt-1 w-full focus:ring-yellow-500 focus:border-yellow-500 text-black" 
+                        type="number" 
+                        min="100" 
+                        name="height" 
+                        placeholder="Enter your height (cm)" 
+                        value="{{ old('height') }}" 
+                        autofocus>
+                    @error('height')
+                        <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
+                    @enderror
+                </div>
+            
+                <!-- Activity Level -->
+                <div class="w-full mt-4 text-white ">
+                    <label for="activity" class="text-[#FF9D52] font-medium">Activity Level</label>
+                    <div class="flex flex-wrap gap-x-4 ">
+                        <div class="mt-2 w-[40%]">
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="activity" value="1.2" class="focus:ring-yellow-500 focus:ring-offset-2 text-yellow-400" required>
+                                <span class="ml-2">Little or no exercise</span>
+                            </label>
+                        </div>
+                        <div class="mt-2 w-[40%]">
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="activity" value="1.375" class="focus:ring-yellow-500 focus:ring-offset-2 text-yellow-400" required>
+                                <span class="ml-2">Sports 1–3 days/week</span>
+                            </label>
+                        </div>
+                        <div class="mt-2 w-[40%]">
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="activity" value="1.55" class="focus:ring-yellow-500 focus:ring-offset-2 text-yellow-400" required>
+                                <span class="ml-2">Sports 3–5 days/week</span>
+                            </label>
+                        </div>
+                        <div class="mt-2 w-[40%]">
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="activity" value="1.725" class="focus:ring-yellow-500 focus:ring-offset-2 text-yellow-400" required>
+                                <span class="ml-2">Sports 6–7 days/week</span>
+                            </label>
+                        </div>
+
+                    </div>
+                    <div class="mt-2">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="activity" value="1.9" class="focus:ring-yellow-500 focus:ring-offset-2 text-yellow-400" required>
+                            <span class="ml-2">Twice daily</span>
+                        </label>
+                    </div>
+                    @error('activity')
+                        <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
+                    @enderror
+                </div>
+            
+                <!-- Already Registered Link and Submit Button -->
+                <div class="flex items-center justify-end mt-4 gap-x-4 mb-10">
+                    <a href="{{ route('login') }}" class="underline text-sm text-[#fff500] hover:text-yellow-400">
+                        Already registered?
+                    </a>
+            
+                    <button type="submit"  class="bg-[#FF9D52] rounded-xl hover:rounded-none cursor-pointer  text-black hover:bg-black hover:text-[#FF9D52] hover:border hover:border-[#FF9D52] px-10 py-2  ">
+                        Register
+                    </button>
+                </div>
+            </form>
+                 
+                </div>
+            </div>
     
+    
+            <div class="w-[50%]   flex flex-col pt-40 items-center ">
+                <div class="logo flex justify-center items-center">
+                    <img src="{{ asset('storage/images/logo-removebg-preview.png') }}" alt="logo" class="w-[100px] h-[100px] object-contain">
+                    <h1 class="text-4xl font-bold text-white">GymFit</h1>
+                </div>
+                <h1 class="text-white text-[55px] font-semibold">Trainer Registration Form</h1>
+                <span class="text-white text-xl font-thin">Please create an account in <span class="font-bold text-md">GymFit</span> as a trainer </span>
+            </div>
+    
+        </div>
+
+</div>
+@endsection
+
+
 
