@@ -17,4 +17,8 @@ class Exercice extends Model
     public function trainerSessions() {
         return $this->belongsToMany(TrainerSession::class, 'trainer_session_exercices');
     }
+
+    public function completedUsers() {
+        return $this->belongsToMany(User::class, 'completed_exercices');
+    }
 }

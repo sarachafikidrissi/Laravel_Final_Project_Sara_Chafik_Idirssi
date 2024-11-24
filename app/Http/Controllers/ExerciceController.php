@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CompletedExercice;
 use App\Models\Exercice;
 use App\Models\TrainerSession;
 use App\Models\User;
@@ -71,6 +72,19 @@ class ExerciceController extends Controller
         return back();
 
         
+    }
+
+    public function completed(Request $request){
+        // dd($request->all());
+        $user = Auth::user();
+        $exercice = Exercice::where('id', $request->exercice_id)->first();
+        if($request->completed == 1){
+            $exercice->completedUsers()->attach($user);
+        }else{
+            $exercice->completedUsers()->detach();
+        }
+     
+        return back();
     }
 
     /**

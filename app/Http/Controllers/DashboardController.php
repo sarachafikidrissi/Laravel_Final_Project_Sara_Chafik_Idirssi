@@ -84,9 +84,24 @@ class DashboardController extends Controller
     }
 
     public function startSession(TrainerSession $session) {
-        $exercice = Exercice::where('id', 1)->first();
-        $randomNumber = rand(5, 20);        
-        return view('Gym.layouts.member.start-session', compact('exercice', 'randomNumber', 'session'));
+        // $exercice = Exercice::where('id', 1)->first();
+        $exercices= Exercice::all();
+        $randomNumber = rand(5, 20);
+        $isCompleted = false;
+        foreach ($exercices as $exercice) {
+            $exist = $exercice->completedUsers()->where('user_id', Auth::user()->id)->exists();
+            if($exist){
+                $isCompleted = true;
+                break;
+            }
+            
+        }
+        // $isCompleted = $exercice->completedUsers()->where('user_id', Auth::user()->id)->exists();
+        // dd($isCompleted);
+
+        
+
+        return view('Gym.layouts.member.start-session', compact('randomNumber', 'session', 'isCompleted'));
     }
 
     /**

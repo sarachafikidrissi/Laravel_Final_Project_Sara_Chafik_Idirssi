@@ -70,6 +70,10 @@ class User extends Authenticatable
         return $this->belongsToMany(TrainerSession::class, 'trainer_session_particapnts');
     }
 
+    public function completedExercices() {
+        return $this->belongsToMany(Exercice::class, 'completed_exercices');
+    }
+
     // public function trainerRequests() {
     //     return $this->belongsTo(TrainerRequest::class);
     // }
