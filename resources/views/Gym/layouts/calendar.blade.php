@@ -53,20 +53,23 @@
 
                     </div>
                     <div class="px-4 mb-6 mt-3">
-                        <form method="post" action="{{ route('session.join') }}">
-                            @csrf
-                            <input type="text" value={{ Auth::user()->id }} name="user_id">
-                            <input type="text" id="sesId" name="trainer_session_id">
-                            <button onclick="closeModal('modelConfirm')"
-                                class="text-white bg-[#ff952f] hover:bg-[#63482f] focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-base inline-flex items-center px-3 py-2.5 text-center mr-2">
-                                Join Session
-                            </button>
-                        </form>
-                        <a href="#" onclick="closeModal('modelConfirm')"
-                            class="text-gray-900 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-cyan-200 border border-gray-200 font-medium inline-flex items-center rounded-lg text-base px-3 py-2.5 text-center"
-                            data-modal-toggle="delete-user-modal">
-                            No, cancel
-                        </a>
+                        <div class="flex ">
+                            <form method="post" action="{{ route('session.join') }}">
+                                @csrf
+                                <input type="text" value={{ Auth::user()->id }} name="user_id" class="hidden">
+                                <input type="text" id="sesId" name="trainer_session_id" class="hidden">
+                                <button onclick="closeModal('modelConfirm')"
+                                    class="text-white bg-[#ff952f] hover:bg-[#63482f] focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-base inline-flex items-center px-3 py-2.5 text-center mr-2">
+                                    Join Session
+                                </button>
+                            </form>
+                            <a href="#" onclick="closeModal('modelConfirm')"
+                                class="text-gray-900 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-cyan-200 border border-gray-200 font-medium inline-flex items-center rounded-lg text-base px-3 py-2.5 text-center"
+                                data-modal-toggle="delete-user-modal">
+                                No, cancel
+                            </a>
+
+                        </div>
                     </div>
 
                 </div>

@@ -11,6 +11,8 @@ use Illuminate\Container\Attributes\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Storage;
+use Stripe\Checkout\Session;
+use Stripe\Stripe;
 
 class TrainerSessionController extends Controller
 {
@@ -151,9 +153,35 @@ class TrainerSessionController extends Controller
                 $user->joinedSessions()->attach($session);
                 $session->spots -= 1;
                 return redirect()->intended(route('start.session', $session->id));
-            }
+            } else {
+                Stripe::setApiKey(config('stripe.sk'));
+                $sessionUrl = Session::create([
+                    'line_items'  => [
+                        [
+                            'price_data' => [
+                                'currency'     => 'usd',
+                                'product_data' => [
+                                    "name" => $session->name,
+                                    "description" => $session->description,
+                                    "images" => ['https://img.freepik.com/free-photo/full-shot-fit-man-training-gym_23-2149734694.jpg?semt=ais_hybrid'],
 
-        }else{
+                                ],
+                                'unit_amount'  => $session->price * 100,
+                            ],
+                            'quantity'   => 1,
+
+                        ],
+                    ],
+                    'mode'        => 'payment', // the mode  of payment
+                    'success_url' => route('start.session', $session->id), // route when success 
+                    'cancel_url'  => route('member.planing'), // route when  failed or canceled
+                ]);
+
+                $user->joinedSessions()->attach($session);
+                $session->spots -= 1;
+                return redirect()->away($sessionUrl->url);
+            }
+        } else {
             return back();
         }
     }
