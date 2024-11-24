@@ -59,6 +59,9 @@ Route::middleware('auth')->group(function () {
     //* Member
 
         Route::get('/member/dashboard', [DashboardController::class, 'memberDashboard'])->name('member.dashboard');
+        Route::get('/member/planing', [DashboardController::class, 'memberPlanning'])->name('member.planing');
+        Route::post('/join/session', [TrainerSessionController::class, 'joinSession'])->name('session.join');
+        Route::get('/session/start/{session}', [DashboardController::class, 'startSession'])->name('start.session');
 
 
 

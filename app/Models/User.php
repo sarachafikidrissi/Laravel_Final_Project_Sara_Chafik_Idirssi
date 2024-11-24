@@ -66,6 +66,10 @@ class User extends Authenticatable
         return $this->hasMany(Payement::class);
     }
 
+    public function joinedSessions() {
+        return $this->belongsToMany(TrainerSession::class, 'trainer_session_particapnts');
+    }
+
     // public function trainerRequests() {
     //     return $this->belongsTo(TrainerRequest::class);
     // }

@@ -22,4 +22,8 @@ class TrainerSession extends Model
     public function exercices() {
         return $this->belongsToMany(Exercice::class, 'trainer_session_exercices');
     }
+
+    public function participants() {
+        return $this->belongsToMany(User::class, 'trainer_session_particapnts');
+    }
 }

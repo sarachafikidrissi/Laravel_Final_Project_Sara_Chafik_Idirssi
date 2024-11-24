@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Exercice;
 use App\Models\TrainerSession;
+use App\Models\TrainerSessionExercice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -74,6 +75,18 @@ class DashboardController extends Controller
 
         
         return view('Gym.layouts.member.member-dahsboard', compact('exercice'));
+    }
+
+    public function memberPlanning(){
+        $exercice = Exercice::where('id', 1)->first();
+        
+        return view('Gym.layouts.member.member-planing', compact('exercice'));
+    }
+
+    public function startSession(TrainerSession $session) {
+        $exercice = Exercice::where('id', 1)->first();
+        $randomNumber = rand(5, 20);        
+        return view('Gym.layouts.member.start-session', compact('exercice', 'randomNumber', 'session'));
     }
 
     /**

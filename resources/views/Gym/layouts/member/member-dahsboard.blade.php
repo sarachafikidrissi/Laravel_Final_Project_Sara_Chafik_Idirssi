@@ -7,7 +7,7 @@
         </div>
         <div class="w-[80vw] flex flex-col gap-y-2 bg-black/5p-2">
             @include('Gym.layouts.headbar')
-            <div class="flex gap-x-2">
+            <div class="flex justify-between">
                 <div class="flex flex-col gap-y-8">
                     <div class="w-[60vw] h-[30vh] p-4 bg-white rounded-lg shadow mx-auto">
                         <div class="flex justify-between items-center mb-2">
@@ -86,10 +86,6 @@
                 </div>
                 @include('Gym.layouts.member.right-sidebar')
             </div>
-
-
-
-
         </div>
 
         <script>
