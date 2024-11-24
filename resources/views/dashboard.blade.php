@@ -49,7 +49,19 @@
 
 
  @section('content')
-     <div class="flex p-2 gap-x-4 bg-black/5">
+
+ @checkRole('trainer')
+    @include('Gym.layouts.trainer.trainer-dashboard')
+ @endCheckRole
+
+ @checkRole('member')
+    @include('Gym.layouts.member.member-dahsboard')
+ @endCheckRole
+
+ @checkRole('admin')
+    @include('Gym.layouts.admin-dash')
+ @endCheckRole
+     {{-- <div class="flex p-2 gap-x-4 bg-black/5">
          <div class="w-[20vw] h-[95vh] rounded-xl bg-black text-white ">
              @include('Gym.layouts.sidebar')    
          </div>
@@ -58,7 +70,7 @@
              @include('Gym.layouts.contents')
                
                  
-         </div>
+         </div> --}}
         
 
  @endsection

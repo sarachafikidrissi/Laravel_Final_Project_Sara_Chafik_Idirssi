@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <div class="flex p-2 gap-x-4 bg-black/5 test  h-[100vh]">
+    <div class="flex p-2 gap-x-4 bg-black/5  h-[100vh]">
         <div class="w-[20vw] h-[95vh] rounded-xl bg-black text-white ">
             @include('Gym.layouts.sidebar')
         </div>

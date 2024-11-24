@@ -1,7 +1,7 @@
 <div class="flex flex-col w-full h-full  py-5 gap-y-10 text-xl text-white ">
-    <a href="{{ route('main.dashboard') }}" 
+    <a href="{{ route('trainer.dashboard') }}" 
        class="flex items-center gap-x-3 px-2 py-1 rounded-md 
-              {{ Route::is('main.dashboard') ? 'bg-[#FF9D52] text-white' : 'hover:bg-[#FF9D52] hover:text-white' }}">
+              {{ Route::is('trainer.dashboard') ? 'bg-[#FF9D52] text-white' : 'hover:bg-[#FF9D52] hover:text-white' }}">
         <i class="bi bi-ui-radios-grid font-bold"></i> 
         <span>Dashboard</span>
     </a>

@@ -7,16 +7,22 @@ use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TrainerRequestController;
 use App\Http\Controllers\TrainerSessionController;
+use App\Models\Exercice;
 use App\Models\TrainerSession;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
+    
     return view('Landing_Page.landing_page');
 })->name('home');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $exercice = Exercice::where('id', 1)->first();
+    $totalSessions = TrainerSession::where('user_id', Auth::user()->id)->count();
+    $totalExercices = Exercice::where('user_id', Auth::user()->id)->count();
+    return view('dashboard', compact('exercice', 'totalSessions', 'totalExercices'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -35,7 +41,7 @@ Route::middleware('auth')->group(function () {
 
     //*trainer
 
-    Route::get('/main/dashboard', [DashboardController::class, 'trainerdashboard'])->name('main.dashboard');
+    Route::get('/trainer/dashboard', [DashboardController::class, 'trainerdashboard'])->name('trainer.dashboard');
     Route::get('/trainer/sessions', [DashboardController::class, 'trainerSessions'])->name('trainer.sessions');
 
         //*sessions
