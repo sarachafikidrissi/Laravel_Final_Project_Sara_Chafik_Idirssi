@@ -19,9 +19,9 @@
         <span >Join Session</span>
     </a>
 
-    <a href="{{ route('trainer.exercices') }}"
+    <a href="{{ route('favorites') }}"
         class="flex items-center gap-x-3 px-2 py-1 rounded-md 
-              {{ Route::is('trainer.exercices') ? 'bg-[#FF9D52] text-white' : 'hover:bg-[#FF9D52] hover:text-white' }}">
+              {{ Route::is('favorites') ? 'bg-[#FF9D52] text-white' : 'hover:bg-[#FF9D52] hover:text-white' }}">
         <div  class="border w-[40px] h-[40px] rounded-full bg-gray-900 border-transparent relative">
 
             <i class="bi bi-heart-pulse absolute left-[50%] translate-x-[-50%] bottom-[50%] translate-y-[50%]"></i>

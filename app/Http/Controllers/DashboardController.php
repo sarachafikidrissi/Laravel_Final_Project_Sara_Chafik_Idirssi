@@ -143,6 +143,14 @@ class DashboardController extends Controller
         return view('Gym.layouts.member.member-reservation');
     }
 
+
+    public function favorites(){
+        $exerciceIds =CompletedExercice::where('user_id', Auth::user()->id)->where('isFavorite', 1)->pluck('exercice_id');
+        $exercices = Exercice::whereIn('id', $exerciceIds)->get();
+        
+        return view('Gym.layouts.member.favorite-exercices', compact('exercices'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

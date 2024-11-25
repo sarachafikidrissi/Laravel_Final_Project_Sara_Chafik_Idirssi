@@ -80,6 +80,7 @@ Route::middleware('auth')->group(function () {
 
         Route::put('/exercice/favorite/{exercice}', [ExerciceController::class, 'favoriteExercice'])->name('exercice.favorite');
 
+        Route::get('/favorite/exercices', [DashboardController::class, 'favorites'])->name('favorites');
 
 
 
