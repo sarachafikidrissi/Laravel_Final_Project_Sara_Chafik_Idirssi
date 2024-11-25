@@ -10,12 +10,14 @@
             @include('Gym.layouts.headbar')
             <div class="w-full flex flex-col gap-y-2">
                 <div class="">
-                    <button id="openSession" class="bg-rose-500 text-white rounded-md px-4 py-2 hover:bg-rose-700 transition hidden" onclick="openModal('modelConfirm')">
+                    <button id="openSession"
+                        class="bg-rose-500 text-white rounded-md px-4 py-2 hover:bg-rose-700 transition hidden"
+                        onclick="openModal('modelConfirm')">
                         Click to Open modal
-                     </button>
+                    </button>
                     @include('Gym.layouts.modals.calendar-modal')
-                     
-                     {{-- <script type="text/javascript">
+
+                    {{-- <script type="text/javascript">
                          window.openModal = function(modalId) {
                              document.getElementById(modalId).style.display = 'block'
                              document.getElementsByTagName('body')[0].classList.add('overflow-y-hidden')
@@ -68,6 +70,11 @@
 
             let sessions = response.data.events
             console.log(sessions);
+
+            const currentTime = new Date();
+
+            // Filter out past events
+            const upcomingEvents = sessions.filter(event => new Date(event.start) > currentTime);
 
 
             let nowDate = new Date()
@@ -128,7 +135,7 @@
 
                 // events  hya  property dyal full calendar
                 //  kat9bel array dyal objects  khass  i kono jayin 3la chkl  object fih  start  o end  7it hya li kayfahloha
-                events: sessions,
+                events: upcomingEvents,
 
                 selectAllow: (info) => {
 
@@ -176,11 +183,11 @@
             calendar.render();
 
             function validateOwner(info) {
-                        let owner = info.event._def.extendedProps.owner
-                        let authUser = `{{ Auth::user()->id }}`
+                let owner = info.event._def.extendedProps.owner
+                let authUser = `{{ Auth::user()->id }}`
 
-                        return owner == authUser
-                    }
+                return owner == authUser
+            }
 
         })
     </script>

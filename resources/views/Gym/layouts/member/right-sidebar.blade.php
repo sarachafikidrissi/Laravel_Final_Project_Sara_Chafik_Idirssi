@@ -2,7 +2,7 @@
     <div>
         <span class="text-sm font-semibold">Profile</span>
         <!-- Dropdown Menu -->
-        <div class="relative bottom-8">
+        {{-- <div class="relative bottom-8">
             <button class="text-white   ps-20 absolute right-0" onclick="toggleDropdown({{ $exercice->id }})">
                 <i class="bi bi-three-dots text-sm font-semibold"></i>
             </button>
@@ -25,7 +25,7 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 
     <div class="flex flex-col gap-y-2 items-center">

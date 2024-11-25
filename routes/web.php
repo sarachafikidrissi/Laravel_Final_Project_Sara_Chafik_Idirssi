@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExerciceController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\TrainerRequestController;
 use App\Http\Controllers\TrainerSessionController;
 use App\Models\Exercice;
@@ -70,6 +71,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/member/planing', [DashboardController::class, 'memberPlanning'])->name('member.planing');
         Route::post('/join/session', [TrainerSessionController::class, 'joinSession'])->name('session.join');
         Route::get('/session/start/{session}', [DashboardController::class, 'startSession'])->name('start.session');
+        Route::get('/member/reservation', [DashboardController::class, 'reservations'])->name('member.reservation');
+
+        Route::resource("reservation" , ReservationController::class);
+        Route::put("/reservation/update/{reservation}" , [ReservationController::class , "update"])->name("updateReservation");
+        Route::delete("/reservation/delete/{reservation}" , [ReservationController::class , "destroy"])->name("deleteReservation");
+
 
 
 

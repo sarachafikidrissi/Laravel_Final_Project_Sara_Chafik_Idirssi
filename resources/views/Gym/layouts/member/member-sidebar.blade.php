@@ -29,9 +29,9 @@
         <span>Favorites</span>
     </a>
 
-    <a href="{{ route('session.calendar') }}"
+    <a href="{{ route('member.reservation') }}"
         class="flex items-center gap-x-3 px-2 py-1 rounded-md 
-              {{ Route::is('admin.planning') ? 'bg-[#FF9D52] text-white' : 'hover:bg-[#FF9D52] hover:text-white' }}">
+              {{ Route::is('member.reservation') ? 'bg-[#FF9D52] text-white' : 'hover:bg-[#FF9D52] hover:text-white' }}">
         <div class="border w-[40px] h-[40px] rounded-full bg-gray-900 border-transparent relative">
             <i
                 class="bi bi-calendar2-plus-fill  absolute left-[50%] translate-x-[-50%] bottom-[50%] translate-y-[50%] "></i>

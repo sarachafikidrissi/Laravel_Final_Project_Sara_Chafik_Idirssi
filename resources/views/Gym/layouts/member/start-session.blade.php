@@ -25,20 +25,23 @@
                                         <h1 class="text-white text-xl font-medium">{{ $exercice->name }}</h1>
                                         <span class="text-white/30 text-sm ">{{ $randomNumber }} reps</span>
                                     </div>
-                                    <form  method="post" action="{{ route('exercice.completed') }}">
+                                    <form method="post" action="{{ route('exercice.completed') }}">
                                         @csrf
                                         <input type="text" name="exercice_id" value={{ $exercice->id }} hidden>
-                                      
+
                                         <label class="relative cursor-pointer ">
                                             <input type="hidden" name="completed" value="0">
-                                            <input {{ $isCompleted ? 'checked' : '' }} id="completed" type="checkbox"  value="1" class="peer sr-only" name="completed" />
+                                            <input {{ $isCompleted ? 'checked' : '' }} id="completed" type="checkbox"
+                                                value="1" class="peer sr-only" name="completed" />
                                             <div
                                                 class="peer h-5 w-9 rounded-full bg-white after:absolute after:top-[2px] after:left-[2px] after:h-4 after:w-4 after:rounded-full after:border  after:transition-all after:content-[''] peer-checked:bg-[#ff9522] peer-checked:after:translate-x-full peer-focus:outline-none  ">
                                             </div>
                                         </label>
-                
-          
-                                        <button id="completedBtnSubmit" hidden  type="submit">completed</button>
+
+
+
+
+                                        <button id="completedBtnSubmit" hidden type="submit">completed</button>
                                     </form>
                                 </div>
                             </div>
@@ -46,7 +49,37 @@
 
                         </div>
                     @endforeach
-                    <div class="w-[30vw] h-full bg-white rounded-xl shadow-xl"></div>
+                    <div class="flex flex-col gap-y-2">
+                        <div class="w-[30vw] h-[68vh] bg-white rounded-xl shadow-xl p-4 flex flex-col gap-y-4">
+                            <h1 class="text-center text-[#ff952f] text-3xl font-bold">{{ $session->name }}</h1>
+                            <img src="{{ asset('storage/images/sessions/' . $session->image) }}" alt="hh"
+                                class="w-full h-[40vh] object-cover rounded-md">
+                            <div class="flex gap-x-2 items-center">
+                                <h1 class="text-md font-bold">Session Name: </h1>
+                                <span class="text-sm text-black/50 font-semibold">{{ $session->name }}</span>
+                            </div>
+                            <div class="flex gap-x-2 items-center">
+                                <h1 class="text-md font-bold">Start time: </h1>
+                                <span class="text-sm text-black/50 font-semibold">{{ $hours }} hours {{ $minutes }}
+                                    minutes</span>
+                            </div>
+                            <div class="flex gap-x-2 items-center">
+                                <h1 class="text-md font-bold">Number of Exercices: </h1>
+                                <span class="text-sm text-black/50 font-semibold">{{ $numberOfExercices }}</span>
+                            </div>
+                            <div class="flex gap-x-2 items-center">
+                                <h1 class="text-md font-bold">Session Trainer: </h1>
+                                <span class="text-sm text-black/50 font-semibold">{{ $sessionTrainer }}</span>
+                            </div>
+    
+                        </div>
+
+                        <div class="w-[30vw] h-[13vh] bg-black rounded-xl shadow-xl  flex items-center gap-x-2  p-4">
+                            <i class="bi bi-fire text-[#ff952f] text-xl"></i>
+                            <h1 class="text-white text-xl font-bold">Calories Burnt</h1>
+                            <h1 class="text-white">to add caloires here</h1>
+                        </div>
+                    </div>
                 </div>
                 @include('Gym.layouts.member.right-sidebar')
 
@@ -65,8 +98,7 @@
             //     completedBtn.value = 0
             // }
             completedBtnSubmit.click();
-                     
+
         })
-        
     </script>
 @endsection

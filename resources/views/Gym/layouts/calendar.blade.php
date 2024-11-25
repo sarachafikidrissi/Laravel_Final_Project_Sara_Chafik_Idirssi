@@ -80,7 +80,7 @@
 
     </div>
     <div class="w-full">
-        <div class="w-full h-[84vh] p-3" id="calendar">
+        <div class="w-full h-[84vh] p-3" id="memberCalendar">
             @foreach (Auth::user()->roles as $role)
                 <input class="hidden" id="authRole" type="text" value={{ $role->role }}>
                 <div>
@@ -106,7 +106,7 @@
             // console.log(sessions);
 
 
-            // let nowDate = new Date()
+            let nowDate = new Date()
             // let day = nowDate.getDate()
             // let month = nowDate.getMonth() + 1
             // let hours = nowDate.getHours()
@@ -116,7 +116,7 @@
             // start.min = minTimeAllowed;
 
 
-            var myCalendar = document.getElementById('calendar');
+            var myCalendar = document.getElementById('memberCalendar');
 
 
             var calendar = new FullCalendar.Calendar(myCalendar, {
@@ -164,33 +164,32 @@
 
                 // events  hya  property dyal full calendar
                 //  kat9bel array dyal objects  khass  i kono jayin 3la chkl  object fih  start  o end  7it hya li kayfahloha
-                events: sessions,
+                events: upcomingEvents,
 
 
                 selectAllow: (info) => {
-
                     return info.start >= nowDate;
                 },
 
-                // select: (info) => {
+                select: (info) => {
+                   
 
+                    // if (info.end.getDate() - info.start.getDate() > 0 && !info.allDay) {
+                    //     return
+                    // }
 
-                //     if (info.end.getDate() - info.start.getDate() > 0 && !info.allDay) {
-                //         return
-                //     }
+                    // console.log(info);
+                    // if (info.allDay) {
+                    //     start.value = info.startStr + " 09:00:00"
+                    //     end.value = info.startStr + " 19:00:00"
 
-                //     console.log(info);
-                //     if (info.allDay) {
-                //         start.value = info.startStr + " 09:00:00"
-                //         end.value = info.startStr + " 19:00:00"
+                    // } else {
+                    //     start.value = info.startStr.slice(0, info.startStr.length - 6)
+                    //     end.value = info.endStr.slice(0, info.endStr.length - 6)
+                    // }
 
-                //     } else {
-                //         start.value = info.startStr.slice(0, info.startStr.length - 6)
-                //         end.value = info.endStr.slice(0, info.endStr.length - 6)
-                //     }
-
-                //     openSessionForm.click()
-                // },
+                    // openSessionForm.click()
+                },
 
                 eventClick: (info) => {
 
