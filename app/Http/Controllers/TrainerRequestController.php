@@ -59,7 +59,7 @@ class TrainerRequestController extends Controller
         ]);
         $user->save();
 
-        return back();
+        return back()->with('success', 'Request Has been Approved Successfully');
     }
 
     /**

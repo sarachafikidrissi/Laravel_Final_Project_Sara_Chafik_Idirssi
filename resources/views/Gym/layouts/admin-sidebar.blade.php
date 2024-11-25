@@ -18,7 +18,7 @@
        class="flex items-center gap-x-3 px-2 py-1 rounded-md 
               {{ Route::is('admin.requests') ? 'bg-[#FF9D52] text-white' : 'hover:bg-[#FF9D52] hover:text-white' }}">
         <i class="bi bi-person-plus-fill font-bold"></i> 
-        <span>Trainers</span>
+        <span>Trainers Requests</span>
     </a>
 
     <a href="{{ route('admin.planing') }}" 

@@ -8,8 +8,8 @@
         </div>
         <div class="w-[80vw] flex flex-col gap-y-2 bg-black/5p-2">
             @include('Gym.layouts.headbar')
-            <h class="text-4xl font-thin text-[#de7829]">Trainers Requests</h>
-            <div class="bg-white  card-shadow rounded-lg p-6 text-black overflow-x-auto">
+            <h class="text-4xl font-thin bg-black p-2 rounded-md text-[#de7829]"><i class="bi bi-send-exclamation-fill"></i> Manage Trianers Requests</h>
+            <div class="bg-black  card-shadow rounded-lg px-6 py-2 text-white overflow-x-auto">
               
               <div class="max-h-[71vh] overflow-y-auto ">
                 <table class="min-w-full divide-y divide-gray-700 ">
@@ -56,7 +56,7 @@
                         <form method="post" action="/request/approve/{{ $request->id }}" >
                             @csrf
                             @method('PUT')
-                            <button class="bg-[#FF9D52] text-white px-4 py-2 rounded-lg shadow-md hover:bg-orange-600">
+                            <button class="bg-[#eb8125] text-black px-4 py-2 rounded-lg shadow-md hover:bg-orange-600">
                               Approve
                             </button>
                         </form>

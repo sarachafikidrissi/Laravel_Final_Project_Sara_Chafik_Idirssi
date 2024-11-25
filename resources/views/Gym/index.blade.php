@@ -28,6 +28,8 @@
 <body>
     @yield('content')
 
+    @include('layouts.alert-messages')
+
     <script src="https://cdn.jsdelivr.net/npm/scroll-carousel@1.2.7/dist/scroll.carousel.min.js"></script>
 </body>
 

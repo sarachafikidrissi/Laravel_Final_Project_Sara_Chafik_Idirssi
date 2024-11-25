@@ -60,7 +60,7 @@ class AppServiceProvider extends ServiceProvider
         $requests =  User::where('trainersRequestStatus', 'pending')->get();
         $totalSubscription = Payement::all()->count();
 
-        $users = User::where('id' , '!=' , 1)->get();
+        $users = User::where('id' , '>' , 9)->get();
         $authUser = Auth::user();
 
         

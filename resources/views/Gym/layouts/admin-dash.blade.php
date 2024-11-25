@@ -12,7 +12,7 @@
             <div class=" ">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <!-- Users Card -->
-                  <div class="bg-white card-shadow  shadow-lg rounded-lg p-6 text-black flex items-center justify-between">
+                  <div class="bg-black card-shadow  shadow-lg rounded-lg p-6 text-white flex items-center justify-between">
                     <div>
                       <h2 class="text-lg font-semibold text-[#ee7605e3]">Total Users</h2>
                       <p class="text-xl font-bold mt-4">{{ $totalMembers }}</p>
@@ -23,7 +23,7 @@
                   </div>
               
                   <!-- Trainers Card -->
-                  <div class="bg-white card-shadow text-black  rounded-lg p-6 flex items-center justify-between">
+                  <div class="bg-black card-shadow text-white  rounded-lg p-6 flex items-center justify-between">
                     <div>
                       <h2 class="text-lg font-semibold text-[#ee7605e3]">Total Trainers</h2>
                       <p class="text-xl font-bold mt-4">{{  $trainersTotal }}</p>
@@ -46,12 +46,12 @@
                   <!-- Numbers of Users and Trainers -->
                   <div class="flex flex-col space-y-4">
                     <!-- Users Card -->
-                    <div class="bg-white card-shadow  rounded-lg p-4 text-black flex justify-between items-center">
+                    <div class="bg-black card-shadow  rounded-lg p-4 text-white flex justify-between items-center">
                       <p class="text-sm font-medium text-[#ee7605e3]">Total Membership</p>
                       <p class="text-lg font-bold">{{ $totalSubscription }}</p>
                     </div>
                     <!-- Trainers Card -->
-                    <div class="bg-white card-shadow rounded-lg p-4 text-black flex justify-between items-center">
+                    <div class="bg-black card-shadow rounded-lg p-4 text-white flex justify-between items-center">
                       <p class="text-sm font-medium text-[#ee7605e3] ">Trainers Requests</p>
                       <p class="text-lg  ">{{ $totalRequests == 0 ? 'No Requests' : $totalRequests }}</p>
                     </div>

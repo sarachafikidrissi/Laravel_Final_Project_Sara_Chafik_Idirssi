@@ -152,7 +152,7 @@ class RegisteredUserController extends Controller
 
     public function remove(Request $request, User $user) {
         $user->delete();
-        return back();
+        return back()->with('warning', 'User has been deleted successfully');
     }
 
 
