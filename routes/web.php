@@ -38,7 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/all-users', [DashboardController::class, 'showUsers'])->name('admin.users');
     Route::put('/request/approve/{user}', [TrainerRequestController::class, 'update'])->name('request.approve');
     Route::delete('/delete/user/{user}', [RegisteredUserController::class, 'remove'])->name('user.remove');
-
+    Route::get('admin/planing', [DashboardController::class, 'planing'])->name('admin.planing');
 
     //*trainer
 

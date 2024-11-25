@@ -145,7 +145,7 @@ class TrainerSessionController extends Controller
 
         //! check session spots ==> if spots == 0 ==> can't join
 
-        if (!$isExists && $session->spots > 0) {
+        if (!$isExists && $session->spots > 0 && $currentTime->equalTo($sessionStart)) {
 
             //^ check session status ==> if premium redirect user to pay else redirect himt to start session
 

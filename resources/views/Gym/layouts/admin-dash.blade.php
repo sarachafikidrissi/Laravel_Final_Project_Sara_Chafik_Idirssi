@@ -38,13 +38,9 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
                   <!-- Calendar Card -->
                   <div class="bg-white card-shadow rounded-lg p-6 text-black card-shadow col-span-2 flex flex-col justify-between h-[60vh]">
-                    <div>
-                      <h2 class="text-lg font-semibold text-[#ee7605e3]">Planning Calendar</h2>
-                      <p class="text-xl font-bold mt-4">View Schedule</p>
-                    </div>
-                    <button class="mt-4 bg-[#FF9D52] text-black px-4 py-2 rounded-lg shadow-md hover:bg-orange-600">
-                      Go to Calendar
-                    </button>
+
+                    @include('Gym.layouts.planing-calendar')
+                    
                   </div>
               
                   <!-- Numbers of Users and Trainers -->

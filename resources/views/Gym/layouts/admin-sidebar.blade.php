@@ -21,9 +21,9 @@
         <span>Trainers</span>
     </a>
 
-    <a href="" 
+    <a href="{{ route('admin.planing') }}" 
        class="flex items-center gap-x-3 px-2 py-1 rounded-md 
-              {{ Route::is('admin.planning') ? 'bg-[#FF9D52] text-white' : 'hover:bg-[#FF9D52] hover:text-white' }}">
+              {{ Route::is('admin.planing') ? 'bg-[#FF9D52] text-white' : 'hover:bg-[#FF9D52] hover:text-white' }}">
         <i class="bi bi-calendar3 font-bold"></i> 
         <span>Planning</span>
     </a>

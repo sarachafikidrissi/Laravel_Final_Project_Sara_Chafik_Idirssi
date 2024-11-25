@@ -40,6 +40,10 @@ class DashboardController extends Controller
         return view('Gym.layouts.allUsers');
     }
 
+    public function planing(){
+        return view('Gym.layouts.planing');
+    }
+
 
     //* trainer
 
