@@ -1,6 +1,6 @@
 <div class="bg-black h-[10vh] flex items-center justify-between px-20 navvv">
     <div class="logo flex justify-center items-center">
-        <img src="{{ asset('storage/images/logo-removebg-preview.png') }}" alt="logo"
+        <img src="{{ asset('storage/images/logo.png') }}" alt="logo"
             class="w-[80px] h-[80px] object-contain">
         <h1 class="text-3xl font-bold text-white">GymFit</h1>
     </div>

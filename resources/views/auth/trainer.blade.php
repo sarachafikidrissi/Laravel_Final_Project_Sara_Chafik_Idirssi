@@ -172,7 +172,7 @@
     
             <div class="w-[50%]   flex flex-col pt-40 items-center ">
                 <div class="logo flex justify-center items-center">
-                    <img src="{{ asset('storage/images/logo-removebg-preview.png') }}" alt="logo" class="w-[100px] h-[100px] object-contain">
+                    <img src="{{ asset('storage/images/logo.png') }}" alt="logo" class="w-[100px] h-[100px] object-contain">
                     <h1 class="text-4xl font-bold text-white">GymFit</h1>
                 </div>
                 <h1 class="text-white text-[55px] font-semibold">Trainer Registration Form</h1>
