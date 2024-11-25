@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('exercice_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('session_id');
             $table->boolean('isFavorite')->default(false);
             $table->boolean('isCompleted')->default(false);
             $table->timestamps();

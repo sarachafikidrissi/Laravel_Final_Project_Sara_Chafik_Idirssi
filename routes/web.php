@@ -78,6 +78,8 @@ Route::middleware('auth')->group(function () {
         Route::delete("/reservation/delete/{reservation}" , [ReservationController::class , "destroy"])->name("deleteReservation");
 
 
+        Route::put('/exercice/favorite/{exercice}', [ExerciceController::class, 'favoriteExercice'])->name('exercice.favorite');
+
 
 
 

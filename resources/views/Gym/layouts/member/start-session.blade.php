@@ -8,17 +8,29 @@
         <div class="w-[80vw] flex flex-col gap-y-2 bg-black/5p-2">
             @include('Gym.layouts.headbar')
             <div class="flex justify-between gap-x-1">
+               
                 <div class="w-full h-[82vh] flex gap-x-3">
+                    <div
+                    class="w-[30vw] max-h-[82vh] bg-black rounded-xl shadow-xl gap-y-2  flex flex-col items-center py-4 overflow-y-auto">
                     @foreach ($session->exercices as $exercice)
-                        <div
-                            class="w-[30vw] max-h-[82vh] bg-black rounded-xl shadow-xl gap-y-2  flex flex-col items-center py-4 overflow-y-auto">
-                            <div class="w-[85%] h-[10vh] bg-white/20 rounded-xl flex-none relative">
+                            <div class="w-[85%] h-[14vh] bg-white/20 rounded-xl flex-none relative">
                                 <div class="absolute right-3">
-                                    <span class="text-white/70 text-sm"> favorites</span>
-                                    <i class="text-sm text-red-700 bi bi-heart cursor-pointer"></i>
+                                    @if ($isCompleted)
+                                    <form method="post" action="/exercice/favorite/{{ $exercice->id }}">
+                                        @csrf
+                                        @method('PUT')
+                                        
+                                        <span class="text-white/70 text-sm"> favorites</span>
+                                        <input type="text" name="exercice_id" value={{ $session->id }} hidden>
+                                        <button>
+                                            <i class="{{ $isFavorite ? 'text-sm text-red-700 bi bi-heart-fill cursor-pointer' : 'text-sm text-red-700 bi bi-heart cursor-pointer' }}"></i>
+                                        </button>
+                                    </form>
+                     
+                                    @endif
 
                                 </div>
-                                <div class="flex items-center p-2 gap-x-3">
+                                <div class="flex items-center p-2 justify-between gap-x-3">
                                     <img src="{{ asset('storage/images/exercices/' . $exercice->image) }}" alt=""
                                         class="w-[100px] h-[8vh] rounded-md object-cover">
                                     <div>
@@ -27,6 +39,7 @@
                                     </div>
                                     <form method="post" action="{{ route('exercice.completed') }}">
                                         @csrf
+                                        <input type="text" name="session_id" value={{ $session->id }} hidden>
                                         <input type="text" name="exercice_id" value={{ $exercice->id }} hidden>
 
                                         <label class="relative cursor-pointer ">
@@ -47,8 +60,8 @@
                             </div>
 
 
+                            @endforeach
                         </div>
-                    @endforeach
                     <div class="flex flex-col gap-y-2">
                         <div class="w-[30vw] h-[68vh] bg-white rounded-xl shadow-xl p-4 flex flex-col gap-y-4">
                             <h1 class="text-center text-[#ff952f] text-3xl font-bold">{{ $session->name }}</h1>
@@ -60,7 +73,8 @@
                             </div>
                             <div class="flex gap-x-2 items-center">
                                 <h1 class="text-md font-bold">Start time: </h1>
-                                <span class="text-sm text-black/50 font-semibold">{{ $hours }} hours {{ $minutes }}
+                                <span class="text-sm text-black/50 font-semibold">{{ $hours }} hours
+                                    {{ $minutes }}
                                     minutes</span>
                             </div>
                             <div class="flex gap-x-2 items-center">
@@ -71,7 +85,7 @@
                                 <h1 class="text-md font-bold">Session Trainer: </h1>
                                 <span class="text-sm text-black/50 font-semibold">{{ $sessionTrainer }}</span>
                             </div>
-    
+
                         </div>
 
                         <div class="w-[30vw] h-[13vh] bg-black rounded-xl shadow-xl  flex items-center gap-x-2  p-4">

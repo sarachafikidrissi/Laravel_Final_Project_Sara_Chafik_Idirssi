@@ -78,12 +78,36 @@ class ExerciceController extends Controller
         // dd($request->all());
         $user = Auth::user();
         $exercice = Exercice::where('id', $request->exercice_id)->first();
-        if($request->completed == 1){
-            $exercice->completedUsers()->attach($user);
-        }else{
+        $completed = CompletedExercice::create([
+            "session_id"=>$request->session_id,
+            "user_id"=>$user->id,
+            "exercice_id"=>$request->exercice_id
+        ]);
+        if($request->completed == 0){
+            // $exercice->completedUsers()->attach($user);
             $exercice->completedUsers()->detach();
+            
+
         }
+        // else{
+        //     $exercice->completedUsers()->detach();
+        // }
      
+        return back();
+    }
+
+    public function favoriteExercice(Request $request, Exercice $exercice){
+
+
+        $favoriteExercice = CompletedExercice::where('user_id', Auth::user()->id)->first();
+        if($favoriteExercice->isFavorite == 0 ){
+            
+            $favoriteExercice->isFavorite = 1;
+            
+        }else{
+            $favoriteExercice->isFavorite = 0;
+        }
+        $favoriteExercice->save();
         return back();
     }
 

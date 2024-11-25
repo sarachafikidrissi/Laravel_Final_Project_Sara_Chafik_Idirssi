@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CompletedExercice;
 use App\Models\Exercice;
 use App\Models\TrainerSession;
 use App\Models\TrainerSessionExercice;
@@ -100,15 +101,21 @@ class DashboardController extends Controller
         $exercices = Exercice::all();
         $randomNumber = rand(5, 20);
         $isCompleted = false;
+        $isFavorite = false;
         foreach ($exercices as $exercice) {
+            // dd($exercice);
             $exist = $exercice->completedUsers()->where('user_id', Auth::user()->id)->exists();
+            $favoriteExercice = CompletedExercice::where('user_id', Auth::user()->id)->first();
+
+            // dd($favoriteExercice);
             if ($exist) {
                 $isCompleted = true;
+                if ($favoriteExercice->isFavorite == 1) {
+                    $isFavorite = true;
+                }
                 break;
             }
         }
-        // $isCompleted = $exercice->completedUsers()->where('user_id', Auth::user()->id)->exists();
-        // dd($isCompleted);
 
         // Parse start and finish times as Carbon instances
         $start = Carbon::parse($session->start_time);
@@ -125,13 +132,14 @@ class DashboardController extends Controller
 
         $numberOfExercices = TrainerSessionExercice::where('trainer_session_id', $session->id)->count();
         $sessionTrainer = User::where('id', $session->user_id)->first()->name;
-                        
 
 
 
-        return view('Gym.layouts.member.start-session', compact('sessionTrainer','numberOfExercices', 'randomNumber', 'session', 'isCompleted', 'hours', 'minutes'));
+
+        return view('Gym.layouts.member.start-session', compact('sessionTrainer', 'numberOfExercices', 'randomNumber', 'session', 'isCompleted', 'hours', 'minutes', 'isFavorite'));
     }
-    public function reservations() {
+    public function reservations()
+    {
         return view('Gym.layouts.member.member-reservation');
     }
 

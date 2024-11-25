@@ -21,7 +21,7 @@
                         <button id="submitUpdate"></button>
                     </form>
                     @include('Gym.layouts.modals.delete-reservation')
-                    <div class="w-full h-[90vh] bg-white rounded-3xl border-none p-3" id="reservationCalendar"></div>
+                    <div class="w-[90vw] h-[84vh] bg-white rounded-3xl border-none p-3" id="reservationCalendar"></div>
 
                     @include('Gym.layouts.member.right-sidebar')
 
