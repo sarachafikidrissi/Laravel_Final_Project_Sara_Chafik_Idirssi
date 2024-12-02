@@ -101,7 +101,7 @@
             const currentTime = new Date();
 
             // Filter out past events
-            const upcomingEvents = sessions.filter(event => new Date(event.start) > currentTime);
+            const upcomingEvents = sessions.filter(event => new Date(event.end) > currentTime);
 
             // console.log(sessions);
 

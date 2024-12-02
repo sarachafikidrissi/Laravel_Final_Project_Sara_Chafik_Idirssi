@@ -51,6 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/session/edit/{session}', [TrainerSessionController::class, 'edit'])->name('session.edit');
     Route::put('/session/update/{session}', [TrainerSessionController::class, 'update'])->name('session.update');
     Route::get('/create/session', [TrainerSessionController::class, 'create'])->name('create.session');
+    Route::get('/my-session', [TrainerSessionController::class, 'trainerSession'])->name('my.session');
 
         //* Session calendar
 

@@ -61,7 +61,7 @@ class ReservationController extends Controller
             "user_id" => Auth::user()->id
         ]);
 
-        return back();
+        return back()->with("success", "Reservation has added successfully");
     }
 
     /**
@@ -95,7 +95,7 @@ class ReservationController extends Controller
             "end" => $request->end
         ]);
 
-        return back();
+        return back()->with('success', 'Reservation has been updated successfully');
     }
 
     /**
@@ -104,6 +104,6 @@ class ReservationController extends Controller
     public function destroy(Reservation $reservation)
     {
         $reservation->delete();
-        return back();
+        return back()->with('success', 'Reservation has been deleted Successfuly');
     }
 }

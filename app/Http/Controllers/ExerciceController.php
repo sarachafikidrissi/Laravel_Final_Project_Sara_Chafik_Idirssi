@@ -66,10 +66,14 @@ class ExerciceController extends Controller
         $session = TrainerSession::where('id', $request->trainer_session_id)->first();
         
 
-
+        if (!$exercice->trainerSessions()->where('trainer_session_id', $session->id)->exists()) {
+            $exercice->trainerSessions()->attach($session);
+            return back()->with('success', 'Exercice Has been Added to Session Successfully');
+        } else {
+            return back()->with('warning', 'Exercice is already appended to this session');
+        }
         
-        $exercice->trainerSessions()->attach($session);
-        return back();
+        
 
         
     }

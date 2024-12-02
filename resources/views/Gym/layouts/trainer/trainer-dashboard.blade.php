@@ -55,9 +55,11 @@
 
     <script>
       document.addEventListener('DOMContentLoaded', async function() {
-        let response = await axios.get("/create/session")
+        let response = await axios.get("/my-session")
 
         let sessions = response.data.events
+        console.log(sessions);
+        
           var myCalendar = document.getElementById('planning');
           var calendar = new FullCalendar.Calendar(myCalendar, {
 

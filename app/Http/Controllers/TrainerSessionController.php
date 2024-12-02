@@ -11,6 +11,7 @@ use Illuminate\Container\Attributes\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rules\Exists;
 use Stripe\Checkout\Session;
 use Stripe\Stripe;
 
@@ -69,6 +70,49 @@ class TrainerSessionController extends Controller
         ]);
     }
 
+
+    public function TrainerSession()
+    {
+        $sessions = TrainerSession::where('user_id', auth()->user()->id)->get();
+
+        
+        $sessions = $sessions->map(function ($e) {
+            $userRole = UserRole::where('user_id', $e->user_id)->first();
+
+
+            $currentTime = Carbon::now();
+            $sessionStart = Carbon::parse($e->start);
+
+            if ($currentTime->greaterThan($sessionStart)) {
+                $isPassed = true;
+            } else {
+                $isPassed = false;
+            }
+
+            // $authUserRole = UserRole::where('user_id', Auth::user()->id);
+            return [
+                "id" => $e->id,
+                "start" => $e->start,
+                "end" => $e->end,
+                "owner" => $e->user_id,
+                'title' => $e->name,
+                'role' => $userRole,
+                'image' => $e->image,
+                'spots' => $e->spots,
+                'description' => $e->description,
+                'status' => $e->status,
+                'price' => $e->price,
+                'passed' => $isPassed,
+                "backgroundColor" => '#ee7605e3', // Orange
+                "borderColor" => '#ee7605e3',
+                "textColor" => 'white'
+            ];
+        });
+
+        return response()->json([
+            "events" => $sessions
+        ]);
+    }
     /**
      * Store a newly created resource in storage.
      */
@@ -109,7 +153,7 @@ class TrainerSessionController extends Controller
             "image" => $imageName,
             "spots" => $request->spots,
         ]);
-        return back();
+        return back()->with('success', 'Session Has been created Successfully');
     }
 
     public function joinSession(Request $request)
@@ -118,12 +162,8 @@ class TrainerSessionController extends Controller
         $session = TrainerSession::where('id', $request->trainer_session_id)->first();
         // dd($user);
 
-
         //! check if user already joined session
         $thisSession = TrainerSessionParticapnt::where('trainer_session_id', $session->id)->get();
-
-
-
         $isExists = false;
         foreach ($thisSession as $ele) {
             if ($ele->user_id == $user->id) {
@@ -131,21 +171,20 @@ class TrainerSessionController extends Controller
                 break;
             }
         }
-
-
-
-
-
-
         //! check now time with session date  ===> if session time is !== nowtime can't join '$currentTime->equalTo($sessionStart)'
 
-
+        //&& $currentTime->equalTo($sessionStart)
         $currentTime = Carbon::now();
         $sessionStart = Carbon::parse($session->start);
+        $sessionEnd = Carbon::parse($session->end);
 
         //! check session spots ==> if spots == 0 ==> can't join
-
-        if (!$isExists && $session->spots > 0 && $currentTime->equalTo($sessionStart)) {
+        if($session->spots == 0){
+            return back()->with('warning', 'There are no more Spots Available ');
+        
+        }else if($currentTime->greaterThan($sessionEnd) || $currentTime->lessThan($sessionStart)) {
+            return back()->with('warning', 'Session Has not started yet , comeback later');
+        }else{
 
             //^ check session status ==> if premium redirect user to pay else redirect himt to start session
 
@@ -181,9 +220,7 @@ class TrainerSessionController extends Controller
                 $session->spots -= 1;
                 return redirect()->away($sessionUrl->url);
             }
-        } else {
-            return back();
-        }
+        } 
     }
 
     /**
@@ -228,7 +265,7 @@ class TrainerSessionController extends Controller
             "status" => $request->status,
             "spots" => $request->spots,
         ]);
-        return redirect()->intended(route('trainer.sessions'));
+        return redirect()->intended(route('trainer.sessions'))->with('success', 'Session Has Been Updated Successfully');
     }
 
     /**
@@ -243,6 +280,6 @@ class TrainerSessionController extends Controller
             $session->delete();
         };
 
-        return redirect()->intended(route('trainer.sessions'));
+        return redirect()->intended(route('trainer.sessions'))->with('success', 'Session Has Been Deleted Successfully');
     }
 }

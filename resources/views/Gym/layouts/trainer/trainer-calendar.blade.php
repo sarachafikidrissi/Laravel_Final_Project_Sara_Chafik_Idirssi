@@ -74,7 +74,7 @@
             const currentTime = new Date();
 
             // Filter out past events
-            const upcomingEvents = sessions.filter(event => new Date(event.start) > currentTime);
+            const upcomingEvents = sessions.filter(event => new Date(event.end) > currentTime);
 
 
             let nowDate = new Date()
@@ -124,8 +124,8 @@
 
 
                 initialView: "timeGridWeek", // initial view  =   l view li kayban  mni kan7ol l  calendar
-                slotMinTime: "09:00:00", // min  time  appear in the calendar
-                slotMaxTime: "19:00:00", // max  time  appear in the calendar
+                slotMinTime: "07:00:00", // min  time  appear in the calendar
+                slotMaxTime: "22:00:00", // max  time  appear in the calendar
                 nowIndicator: true, //  indicator  li kaybyen  l wa9t daba   fin  fl calendar
                 selectable: true, //   kankhali l user  i9ad  i selectioner  wast l calendar
                 selectMirror: true, //  overlay   that show  the selected area  ( details  ... )
